@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Map/World.gd" type="Script" id=1]
+[ext_resource path="res://Map/Room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entity/Monsters/Sprout.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entity/Hero.tscn" type="PackedScene" id=4]
+
+[node name="World" type="Node2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="Room" parent="Rooms" instance=ExtResource( 2 )]
+
+[node name="Room2" parent="Rooms" instance=ExtResource( 2 )]
+position = Vector2( 256, 0 )
+
+[node name="Room3" parent="Rooms" instance=ExtResource( 2 )]
+position = Vector2( 512, 0 )
+
+[node name="Monsters" type="Node2D" parent="."]
+
+[node name="Sprout" parent="Monsters" instance=ExtResource( 3 )]
+
+[node name="Hero" type="Node2D" parent="."]
+
+[node name="Hero" parent="Hero" instance=ExtResource( 4 )]
+position = Vector2( 96, 90 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1

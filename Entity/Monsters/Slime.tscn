@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entity/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ressources/Monsters.png" type="Texture" id=2]
+
+[node name="Slime" instance=ExtResource( 1 )]
+pv = 2
+attack = 1
+attack_time = 8
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 64, 64 )

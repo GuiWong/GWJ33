@@ -1,0 +1,9 @@
+Wong_Data_0;Items
+Id;Texture_Id;Name;Price;Stack_Size
+0;0;Slime;5;99
+1;1;Wood;2;50
+2;2;Torch;6;5
+3;3;Shield;20;1
+4;4;Bone;6;99
+5;5;Arrow;4;10
+6;6;Potion;20;1

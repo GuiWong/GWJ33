@@ -1,0 +1,135 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Storage_Object",
+"class": "Crafter",
+"language": "GDScript",
+"path": "res://Object/Crafter.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://Entity/Entity.gd"
+}, {
+"base": "Entity",
+"class": "Fighter",
+"language": "GDScript",
+"path": "res://Entity/Fighter.gd"
+}, {
+"base": "Node2D",
+"class": "Game_World",
+"language": "GDScript",
+"path": "res://Map/World.gd"
+}, {
+"base": "Fighter",
+"class": "Hero",
+"language": "GDScript",
+"path": "res://Entity/Hero.gd"
+}, {
+"base": "Object_Class",
+"class": "Interactable",
+"language": "GDScript",
+"path": "res://Object/Interactable.gd"
+}, {
+"base": "Node2D",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Item/Item.gd"
+}, {
+"base": "Node2D",
+"class": "Object_Class",
+"language": "GDScript",
+"path": "res://Object/Object.gd"
+}, {
+"base": "Storage_Object",
+"class": "Shelf",
+"language": "GDScript",
+"path": "res://Object/Shelf.gd"
+}, {
+"base": "Fighter",
+"class": "Sprout",
+"language": "GDScript",
+"path": "res://Entity/Monsters/Sprout.gd"
+}, {
+"base": "Interactable",
+"class": "Storage_Object",
+"language": "GDScript",
+"path": "res://Object/Storage_Object.gd"
+} ]
+_global_script_class_icons={
+"Crafter": "",
+"Entity": "",
+"Fighter": "",
+"Game_World": "",
+"Hero": "",
+"Interactable": "",
+"Item": "",
+"Object_Class": "",
+"Shelf": "",
+"Sprout": "",
+"Storage_Object": ""
+}
+
+[application]
+
+config/name="GodotWildJam33"
+boot_splash/image="res://Ressources/wallpaper.png"
+config/icon="res://icon.png"
+
+[autoload]
+
+basic_manager="*res://basic_manager.gd"
+fight_manager="*res://scripts/fight_manager.gd"
+room_manager="*res://scripts/room_manager.gd"
+Monster_Manager="*res://scripts/Monster_Manager.gd"
+item_manager="*res://scripts/item_manager.gd"
+progression_manager="*res://scripts/progression_manager.gd"
+
+[display]
+
+window/stretch/mode="2d"
+
+[input]
+
+up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+a={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+b={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
