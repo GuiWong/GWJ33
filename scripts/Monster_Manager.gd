@@ -10,15 +10,28 @@ var monster_texture = [ [0,0],
 						[64,0],
 						[0,64]
 					]
+					
+var monster_loot = [ [ 1 ] ,
+					[ 0 ],
+					[ 4 ]
+					
+					]
+					
+var monster_gold = [2,1,5]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	load_monsters()
 
 
 func load_monsters():
 	monsters.append(load('res://Entity/Monsters/Sprout.tscn'))
 	monsters.append(load('res://Entity/Monsters/Slime.tscn'))
+	monsters.append(load('res://Entity/Monsters/Skeleton.tscn'))
 
+func create_monster_node(id):
+	
+	var n = monsters[id].instance()
+	return n
 
 func get_monster_data(i):
 	
@@ -27,3 +40,11 @@ func get_monster_data(i):
 func get_monster_rect_pos(i):
 	
 	return monster_texture[i]
+	
+func get_loot(i):
+	
+	return monster_loot[i]
+	
+func get_gold_loot(i):
+	
+	return monster_gold[i]

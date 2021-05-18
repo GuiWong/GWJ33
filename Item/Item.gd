@@ -41,5 +41,9 @@ func set_price(p):
 	
 	price = p
 	
+func hide_qtty():
+	
+	$Label.visible = false
+	
 func on_interaction(thing):
 	return true

@@ -15,20 +15,32 @@ func _process(delta):
 	dir = Vector2.ZERO
 	if Input.is_action_pressed('up'):
 		dir.y -= 1
-		rotation_degrees = 0
-		$Hand.rotation_degrees = 0
+		$Interact_area.rotation_degrees = 0
+		$Sprite.region_rect.position.y = 64
+		$Sprite.flip_h = false
+		#rotation_degrees = 0
+		#$Hand.rotation_degrees = 0
 	elif Input.is_action_pressed('down'):
 		dir.y += 1
-		rotation_degrees = 180
-		$Hand.rotation_degrees = -180
+		$Interact_area.rotation_degrees = 180
+		$Sprite.region_rect.position.y = 0
+		$Sprite.flip_h = false
+		#rotation_degrees = 180
+		#$Hand.rotation_degrees = -180
 	if Input.is_action_pressed('left'):
 		dir.x -= 1
-		rotation_degrees = 270
-		$Hand.rotation_degrees = -270
+		$Interact_area.rotation_degrees = 270
+		$Sprite.region_rect.position.y = 128
+		$Sprite.flip_h = true
+		#rotation_degrees = 270
+		#$Hand.rotation_degrees = -270
 	elif Input.is_action_pressed('right'):
 		dir.x += 1
-		rotation_degrees = 90
-		$Hand.rotation_degrees = -90
+		$Interact_area.rotation_degrees = 90
+		$Sprite.region_rect.position.y = 128
+		$Sprite.flip_h = false
+		#rotation_degrees = 90
+		#$Hand.rotation_degrees = -90
 		
 	if Input.is_action_just_pressed('a'):
 		var l = $Interact_area.get_overlapping_areas()
@@ -46,7 +58,7 @@ func _process(delta):
 					temp.position = Vector2.ZERO
 					$Hand.add_child(temp)
 					is_holding = true
-			else:
+			elif temp.get_class() in [ 'Interactable' , 'Crafter' , 'Storage_Object']:
 				var itm = $Hand.get_child(0)
 				$Hand.remove_child(itm)
 				var new = temp.on_interaction(itm)

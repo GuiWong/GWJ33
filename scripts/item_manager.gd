@@ -67,5 +67,8 @@ func create_item(id,quantity):
 	new_item.set_price(get_item_price(id))
 	new_item.set_stack_size(get_item_stack_size(id))
 	new_item.set_sprite(get_item_sprite(id))
+	progression_manager.discover(id)
 	return new_item
+	
+	
 	

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entity/Player.gd" type="Script" id=2]
+[ext_resource path="res://Ressources/Player_base.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.8173
@@ -10,13 +11,21 @@ height = 14.9478
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+offset = Vector2( 0, -24 )
+hframes = 4
+region_enabled = true
+region_rect = Rect2( 0, 0, 128, 64 )
+
 [node name="Interact_area" type="Area2D" parent="." index="2"]
-position = Vector2( 0, -19.237 )
 collision_layer = 1024
 collision_mask = 6144
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_area" index="0"]
+position = Vector2( 0, -19.2 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Hand" type="Node2D" parent="." index="3"]
+position = Vector2( 0, -40 )

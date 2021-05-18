@@ -5,8 +5,11 @@
 
 [node name="Slime" instance=ExtResource( 1 )]
 pv = 2
+base_pv = 2
 attack = 1
+base_attack = 1
 attack_time = 8
+base_attack_time = 8
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

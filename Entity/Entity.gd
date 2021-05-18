@@ -24,3 +24,13 @@ func set_texture_rect(x,y):
 	
 	$Sprite.region_rect.position.x = x
 	$Sprite.region_rect.position.y = y
+	
+func go_to_point(point,delta):
+	
+	dir = point - position
+	move(delta)
+	move_and_slide(speed * dir.normalized())
+	if (point - position).length() <= 4:
+		return true
+	else:
+		return false

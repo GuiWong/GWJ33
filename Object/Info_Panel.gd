@@ -4,6 +4,7 @@ var linked
 
 var size
 var current = 0
+var items_hook = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -69,6 +70,10 @@ func place_item_helper(id,pos_id,c_line,big = false):
 	
 	$Sprites.add_child(sprite)
 	
+func change_sprite(n,rect):
+	
+	$Sprites.get_child(n).region_rect.position = rect
+	
 func build():
 	
 	if linked.get_class() == 'Crafter':
@@ -84,8 +89,13 @@ func build():
 			for re in r.reagents:
 				
 				place_item_helper(re,get_next_item_pos(),c_line)
+				
+				if not re in items_hook:
+					items_hook.append(re)
 			
 			place_item_helper(r.result,get_next_item_pos(),c_line,true)
+			if not r.result in items_hook:
+					items_hook.append(r.result)
 			
 			c_line += (len(r.reagents) + 1) / 2
 			
@@ -94,4 +104,25 @@ func build():
 		$Sprite.modulate = Color(1,0,0)
 		
 		
+func update_sprites(new_id):
+		
+		var recipes = linked.recipe_list
+		
+		var c_sprite = 0
+		
+		for r in recipes:
 	
+			for re in r.reagents:
+				
+				if re == new_id:
+					
+					change_sprite(c_sprite,item_manager.get_item_sprite(re))
+					
+				c_sprite += 1
+				
+			if r.result == new_id:
+					
+				change_sprite(c_sprite,item_manager.get_item_sprite(r.result))
+					
+			c_sprite += 1
+					

@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Ui/Bag.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/items.png" type="Texture" id=2]
+
+[node name="Bag" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Inventory" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Gold" type="Node2D" parent="Inventory"]
+
+[node name="Sprite" type="Sprite" parent="Inventory/Gold"]
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 112, 0, 16, 16 )
+
+[node name="Label" type="Label" parent="Inventory/Gold"]
+margin_left = 16.0
+margin_right = 56.0
+margin_bottom = 16.0
+text = "0"
+valign = 1
+
+[node name="Potion" type="Node2D" parent="Inventory"]
+position = Vector2( 32, 0 )
+
+[node name="Sprite" type="Sprite" parent="Inventory/Potion"]
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 0, 16, 16 )
+
+[node name="Label" type="Label" parent="Inventory/Potion"]
+margin_left = 16.0
+margin_right = 56.0
+margin_bottom = 16.0
+text = "0"
+valign = 1
+
+[node name="Torch" type="Node2D" parent="Inventory"]
+position = Vector2( 64, 0 )
+
+[node name="Sprite" type="Sprite" parent="Inventory/Torch"]
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 0, 16, 16 )
+
+[node name="Label" type="Label" parent="Inventory/Torch"]
+margin_left = 16.0
+margin_right = 56.0
+margin_bottom = 16.0
+text = "0"
+valign = 1
+
+[node name="Content" type="Node2D" parent="."]
+position = Vector2( 96, 0 )
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+margin_right = 337.0
+margin_bottom = 20.0

@@ -7,9 +7,12 @@
 [node name="Sprout" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 pv = 2
+base_pv = 2
 attack = 1
+base_attack = 1
 attack_type = 1
 attack_time = 6
+base_attack_time = 6
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
