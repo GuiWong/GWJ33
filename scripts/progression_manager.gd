@@ -22,7 +22,7 @@ func get_item_sprite(id):
 		
 func discover(id):
 	
-	print (str(id) + ' unlocked!')
+	#print (str(id) + ' unlocked!')
 	if items_unlocks[id]:
 		pass
 		

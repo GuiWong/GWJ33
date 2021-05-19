@@ -22,6 +22,12 @@ func connect_objects():
 	
 	$YSort/Info_Panel3.connect_object($YSort/Shield_Maker)
 	$YSort/Info_Panel3.build()
+	
+	$YSort/Info_Panel4.connect_object($YSort/Bomb_Maker)
+	$YSort/Info_Panel4.build()
+	
+	$YSort/Info_Panel5.connect_object($YSort/Arrow_Maker)
+	$YSort/Info_Panel5.build()
 	#info_hooks.append($YSort/Info_Panel3.build() )
 	
 	chest = $YSort/Chest
@@ -35,13 +41,14 @@ func get_bed():
 
 func on_item_unlock(id):
 	
+	
 	update_info_panel(id)
 	
 	
 func update_info_panel(id):
 	
-	for i in range(3): #TODO: count the number of pannels
-		print("YSort/Info_Panel" + str(i))
+	for i in range(5): #TODO: count the number of pannels
+		#print("YSort/Info_Panel" + str(i))
 		#print (get_node('YSort/Info_Panel')
 		var n = get_node("YSort/Info_Panel" + str(i + 1) )
 		if id in n.items_hook:

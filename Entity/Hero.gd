@@ -2,7 +2,7 @@ extends Fighter
 class_name Hero
 
 var sword_level = 1
-var shield_level = 0
+var shield_level = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#end_animation()

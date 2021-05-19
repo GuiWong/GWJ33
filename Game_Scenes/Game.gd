@@ -20,6 +20,7 @@ func _ready():
 	
 	progression_manager.connect("unlocked",self,'on_item_unlock')
 	room_manager.connect("hero_dead",self,'on_hero_die')
+	room_manager.connect('level_ended',self,'on_hero_win')
 	
 	$Shop.connect_objects()
 	
@@ -51,13 +52,14 @@ func on_dawn():
 	$Dawn_Scene.visible = true
 	$Dawn_Scene.set_process(true)
 	$Dawn_Scene/Label2.text = str(day_manager.current_day)
-	room_manager.set_rooms(level_manager.gen_level_1())
+	room_manager.set_rooms(level_manager.gen_level_n())
 	room_manager.c_room = 0
 	$Shop/YSort/Player.position = Vector2(400,464)
 	
 	$Shop/YSort/Player.set_process(false)
 	
 	$World/Game_Over_World.visible = false
+	$World/Level_ended.visible = false
 	
 	hero.reset()
 	hero.apply_equipement()
@@ -65,6 +67,12 @@ func on_dawn():
 	sold_done = false
 	
 func on_morning():
+	
+	
+	$World.get_next_room().load_room(room_manager.room_list[1])
+	
+	$World.get_current_room().load_room(room_manager.room_list[0])
+	
 	
 	$Dawn_Scene.visible = false
 	$Dawn_Scene.set_process(false)
@@ -80,15 +88,25 @@ func on_day():
 	
 func on_evening():
 	
-	$World/Game_Over_World.visible = true
+	#$World/Game_Over_World.visible = true
 	$World/Bag.empty_consumables()
+	$World.processing_rooms = false
 	
 func on_hero_die():
 	
+	$World/Game_Over_World.visible = true
 	day_manager.start_evening()
+	
+func on_hero_win():
+	
+	$World/Level_ended.visible = true
+	day_manager.start_evening()
+	level_manager.go_to_next_level()
 	
 	
 func on_item_unlock(id):
+	
+	
 	$Shop.on_item_unlock(id)
 	
 func try_sleep():
@@ -161,6 +179,10 @@ func load_hero_charges_from_bag():
 	
 	hero.heal_charges = $World/Bag.potion
 	
+	hero.charges[0] = $World/Bag.arrow
+	
+	hero.charges[1] = $World/Bag.bomb
+	
 	
 	
 func launch_adventure():
@@ -169,6 +191,7 @@ func launch_adventure():
 	load_hero_charges_from_bag()
 	#room_manager.set_rooms(level_manager.gen_level_1())
 	$World.initiate_world()
+	$World.processing_rooms = true
 	
 	
 func get_next_bag_item():
@@ -191,7 +214,7 @@ func can_buy(id,price):
 		
 		return ret
 		
-	if id in [2,6]:
+	if id in [2,5,6,9]:
 		
 		if $World/Bag.has_space_for(id):
 			

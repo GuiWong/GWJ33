@@ -10,7 +10,10 @@ func _ready():
 	slots = $Slots.get_child_count()
 
 func get_item_in_slot(i):
-	return $Slots.get_child(i).get_child(0)
+	if $Slots.get_child(i).get_child_count() >= 1:
+		return $Slots.get_child(i).get_child(0)
+	else:
+		return null
 	
 func add_item_in_slot(i,item):
 	$Slots.get_child(i).add_child(item)

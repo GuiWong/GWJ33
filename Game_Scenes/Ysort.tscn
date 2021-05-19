@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entity/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Object/TorchMaker.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Object/Shield_Maker.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Object/Chest.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Object/Bed.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Object/Bomb_Maker.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Object/Arrow_Maker.tscn" type="PackedScene" id=10]
 
 [node name="YSort" type="YSort"]
 
@@ -49,3 +51,16 @@ position = Vector2( 464, 368 )
 
 [node name="Bed" parent="." instance=ExtResource( 8 )]
 position = Vector2( 432, 464 )
+
+[node name="Bomb_Maker" parent="." instance=ExtResource( 9 )]
+position = Vector2( 336, 112 )
+
+[node name="Info_Panel4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 336, 80 )
+
+[node name="Arrow_Maker" parent="." instance=ExtResource( 10 )]
+position = Vector2( 432, 112 )
+slots = 1
+
+[node name="Info_Panel5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 432, 80 )

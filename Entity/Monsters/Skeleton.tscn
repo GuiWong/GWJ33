@@ -14,9 +14,9 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 64, 64, 64 )
 
-[node name="Sprite2" type="Sprite" parent="." index="1"]
+[node name="Sprite2" type="Sprite" parent="Sprite" index="0"]
 position = Vector2( -30.5656, -3.39618 )
 texture = ExtResource( 3 )
 
-[node name="PvBar" parent="." index="5"]
+[node name="PvBar" parent="." index="4"]
 position = Vector2( -1.13206, -43.3206 )

@@ -21,8 +21,10 @@ export var armor_class = [0,0,0]
 export(int) var defence
 
 export(int) var heal_charges = 0
-var heal_strenght = 4
+export(int) var heal_strenght = 4
+
 export var charges = [0,0]
+export var strenghts = [1,1]
 
 #export(int) var id
 
@@ -55,13 +57,16 @@ func heal(q):
 	
 func use_heal():
 	
-	heal(heal_strenght)
-	heal_charges -= 1
-	emit_signal("charge_used",0,heal_charges)
+	if heal_charges >= 1:
+		heal(heal_strenght)
+		heal_charges -= 1
+		emit_signal("charge_used",0,heal_charges)
+		update_pv_bar()
 	
 func play_attack():
 	
 	$AnimationPlayer.play("attack")
+	
 	
 func play_parry():
 	
@@ -77,6 +82,13 @@ func play_die():
 	
 func end_animation(name = 'noname'):
 	
-	print('ANIMATION ENDED')
+	#print('ANIMATION ENDED')
 	emit_signal('animation_done')
+	
+func use_special(i):
+	
+	charges[i] -= 1
+	
+	emit_signal("charge_used",i+1,charges[i])
+	
 	

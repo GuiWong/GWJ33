@@ -81,6 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GodotWildJam33"
+run/main_scene="res://Ui/Title_Screen.tscn"
 boot_splash/image="res://Ressources/wallpaper.png"
 config/icon="res://icon.png"
 

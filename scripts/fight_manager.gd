@@ -21,8 +21,11 @@ func calc_attack_weight(f_id):
 	
 func calc_special_attack_weight(f_id,att_c):
 	
-	return fighter[f_id].charges[att_c] + 2 * fighter[abs(f_id - 1)].armor_class[0] - 3 * fighter[abs(f_id - 1)].armor_class[att_c + 1]
-
+	if fighter[f_id].charges[att_c] >= 1:
+		return fighter[f_id].charges[att_c] + 2 * fighter[abs(f_id - 1)].armor_class[0] - 3 * fighter[abs(f_id - 1)].armor_class[att_c + 1]
+	else:
+		return 0
+		
 func calc_heal_weight(f_id,h_str):
 	
 	return max(0, (fighter[f_id].pv - h_str ) / fighter[f_id].base_pv - h_str) * 15 + 1
@@ -30,8 +33,21 @@ func calc_heal_weight(f_id,h_str):
 func load_fighter(f1 : Fighter,f2 : Fighter):
 	
 	fighter = [f1,f2]
-	f1.connect('animation_done',self,'animation_waiter')
-	f2.connect('animation_done',self,'animation_waiter')
+	
+	if len(f1.get_signal_connection_list('animation_done')) >= 1:
+		pass
+	else:
+		f1.connect('animation_done',self,'animation_waiter')
+		
+	if len(f2.get_signal_connection_list('animation_done')) >= 1:
+		
+		pass
+		
+	else:
+		
+		f2.connect('animation_done',self,'animation_waiter')
+	
+#	print(f2.get_signal_connection_list('animation_done')[0].get('method' )
 	
 func start_fight():
 	
@@ -54,6 +70,15 @@ func choose_action(attacker):
 		weight = n_w
 		type = 1
 		
+	for sp_t in range(2):
+		
+		n_w = calc_special_attack_weight(sp_t,attacker)
+		if n_w > weight:
+			weight = n_w
+			type = 2 + sp_t
+		
+	
+		
 	#TODO: Special Attack
 	#for i in range(2)
 	
@@ -64,7 +89,7 @@ func plan_next_attack(attacker,instant = false):
 	var f
 	
 	var type = choose_action(attacker)
-	if instant:
+	if instant or type == 1:
 		f = combat_tick
 	else:
 		f = combat_tick + fighter[attacker].attack_time
@@ -113,30 +138,64 @@ func solve_attack(attacker):
 			damage = raw
 	#print(fighter[attacker].name +' is attacking for ' + str(damage) +' damage')
 	
-		fighter[abs(attacker-1)].take_damage(damage)
-	
-		if fighter[abs(attacker-1)].pv <= 0:
-		
-			emit_signal("fight_end")
-			is_waiting = true
-			fighter[abs(attacker-1)].play_die()
-			running_anim += 1
-		
-		else:
-		
-			fighter[abs(attacker-1)].play_hit()
-			running_anim += 1
+		apply_damage(attacker,damage)
+			
+		fighter[attacker].play_attack()
+		running_anim += 1
 	
 	elif type == 1:
 		
 		fighter[attacker].use_heal()
 	
-	#lot to do here...
+	elif type >= 2:
+		
+		var damage = calc_special_result(type - 2 , attacker)
+		
+		apply_damage(attacker,damage)
+		
+		fighter[attacker].use_special(type - 2)
+		
+		
 	
-		fighter[attacker].play_attack()
+		
+	
+	
+func apply_damage(attacker,damage):
+	
+	fighter[abs(attacker-1)].take_damage(damage)
+	
+	if fighter[abs(attacker-1)].pv <= 0:
+		
+		emit_signal("fight_end")
+		is_waiting = true
+		fighter[abs(attacker-1)].play_die()
 		running_anim += 1
+		
+	else:
+		
+		if damage == 0:
+				
+			fighter[abs(attacker-1)].play_parry()
+							
+		else:
+			fighter[abs(attacker-1)].play_hit()
+			running_anim += 1
+			
+			
+func calc_special_result(sp_id,attacker):
 	
+	var raw = fighter[attacker].strenghts[sp_id]
 	
+	raw = max( 0 , raw - fighter[abs(attacker)-1].armor_class[sp_id + 1] )
+	
+	var damage = raw
+	
+	if raw > 0:
+		
+		damage = max( 1 , raw - fighter[abs(attacker-1)].defence)
+		
+	return damage
+		
 	
 	
 	

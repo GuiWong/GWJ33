@@ -16,6 +16,7 @@ var world : Game_World
 var room_list = []
 
 signal hero_dead
+signal level_ended
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,6 +54,17 @@ func solve_item():
 	c_step = 3
 	world.reset_content()
 	
+func solve_level_end():
+	
+	emit_signal("level_ended")
+	c_step = 6
+	
+	path_ended = false
+	
+			#ET LA HAUT AUSSI APPARAMENT
+	#CETAIS LAAAAAAA!!!!!!!!!! (JECROIS)
+	world.reset_content()
+	
 func prepare_fight():
 	
 	#print('Preparing a fight' + str(world.get_hero().name) +' -- ' + str(world.get_monster().name))
@@ -68,6 +80,12 @@ func end_fight():
 		emit_signal('hero_dead')
 	else:
 		c_step = 3
+		
+	if world.get_hero().base_pv - world.get_hero().pv >= 4:
+		
+		world.get_hero().use_heal()
+		
+		
 	is_waiting = false
 	world.stop_timer()
 	world.reset_content()
@@ -91,11 +109,16 @@ func load_end():
 	
 	path_ended = true
 	
+	world.load_content(room_list[c_room].content[0] ,  room_list[c_room].content[1])
+	
 func go_to_next_room():
 	
 	
 	if path_ended:
+		#USELESS I THINK
 		c_step = 6
+		emit_signal('level_ended')
+		print('path ended in gtnr')
 	else:
 		c_step = 0
 	c_room += 1
@@ -107,6 +130,8 @@ func go_to_next_room():
 	comming_content = room_list[c_room].content[0]
 	if comming_content == 0:
 		fight_manager.load_fighter( world.get_hero(),world.get_monster() )
+		
+	
 	
 	
 func load_room(room):
@@ -161,6 +186,10 @@ func solve(delta):
 			
 			solve_item()
 			
+		elif comming_content == 3:
+			
+			solve_level_end()
+			
 		
 	elif c_step == 3 :
 		
@@ -172,10 +201,11 @@ func solve(delta):
 		
 	elif c_step == 5:
 		
+		
 		go_to_next_room()
 		
 	elif c_step == 6:
 		
-		pass
+		print('path ended in update')
 		
 	

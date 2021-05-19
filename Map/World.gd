@@ -4,7 +4,12 @@ class_name Game_World
 
 var current_room_node = 0
 
-var monster_nodes = [null,null,null]
+
+
+#TODO SOLVE THAT SHITTY THING!!!!!!!!!!
+var monster_nodes = [null,null,null,null]
+
+var processing_rooms = false
 
 #temporary!!
 #var romlist = []
@@ -47,16 +52,22 @@ func initiate_world():
 	
 	room_manager.connect_to_world(self)
 	
-	get_next_room().load_room(room_manager.room_list[1])
+	#get_next_room().load_room(room_manager.room_list[1])
+	
+	#get_current_room().load_room(room_manager.room_list[0])
 		
 	instance_content()
 	room_manager.go_to_next_room()
-	$Timer.connect('timeout',fight_manager,'fight_tick')
-	fight_manager.connect('fight_end',room_manager,'end_fight')
+	
+	if len($Timer.get_signal_connection_list('timeout')) == 0:
+		$Timer.connect('timeout',fight_manager,'fight_tick')
+	if len(fight_manager.get_signal_connection_list('fight_end')) == 0:
+		fight_manager.connect('fight_end',room_manager,'end_fight')
 	
 func _process(delta):
 	
-	room_manager.solve(delta)
+	if processing_rooms:
+		room_manager.solve(delta)
 	
 func instance_content():
 	
@@ -102,7 +113,7 @@ func get_bag_content():
 func store_loot(item):
 	
 	$Bag.add_item(item)
-	print('item stored')
+	#print('item stored')
 	
 func store_gold_loot(q):
 	
@@ -123,7 +134,13 @@ func load_content(content_type ,  monster_id = 0):
 		
 		$Monsters.add_child(item_manager.create_item(0,5))
 		
-	else:
+	elif content_type == 2:
+		
+		$Monsters.add_child(item_manager.create_item(0,5))
+		
+	elif content_type == 3:
+		
+		$Monsters.add_child(item_manager.create_item(0,5))
 		
 		pass
 	#$Monsters.get_child(0).pv = monster_data[0]
@@ -148,6 +165,7 @@ func stop():
 	get_current_room().position.x = 0
 	get_next_room().position.x = 256
 	get_last_room().position.x = -256
+	$Monsters.get_child(0).position.x = get_current_room().get_monster_pos().x
 	
 func move(delta):
 	

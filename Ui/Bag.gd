@@ -9,6 +9,12 @@ var potion_max = 1
 var torch = 0
 var torch_max = 5
 
+var arrow = 0
+var arrow_max = 5
+
+var bomb = 0
+var bomb_max = 5
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +25,7 @@ func add_item(item : Item):
 	$Content.add_child(item)
 	item.position = Vector2(total * 16  + 8 , 8)
 	total += 1
-	print (item.position)
+	#print (item.position)
 	
 func add_gold(q):
 	gold += q
@@ -45,16 +51,33 @@ func store_consumable(id,q):
 			torch = max(torch + q , torch_max)
 			$Inventory/Torch/Label.text = str(torch)
 			
+		elif id == 5:
+			
+			arrow = max(arrow + q, arrow_max)
+			$Inventory/Arrow/Label.text = str(arrow)
+			
+		elif id == 9:
+			
+			bomb = max(bomb + q, bomb_max)
+			$Inventory/Bomb/Label.text = str(bomb)
+			
 			
 func update_consumables(i,q):
 	
 	if i == 0 :
 		
 		potion = q
+		$Inventory/Potion/Label.text = str(potion)
 		
-	elif i == 1 :
+	if i == 1:
 		
-		pass
+		arrow = q
+		$Inventory/Arrow/Label.text = str(arrow)
+			
+	if i == 2:
+			
+		bomb = q
+		$Inventory/Bomb/Label.text = str(bomb)
 			
 func use_potion():
 	
@@ -85,6 +108,13 @@ func has_space_for(id):
 		
 		return true
 		
+	elif id == 5 and arrow < arrow_max:
+		
+		return true
+		
+	elif id == 9 and bomb < bomb_max:
+		
+		return true
 	else:
 		
 		return false

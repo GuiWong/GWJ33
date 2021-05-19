@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Map/World.gd" type="Script" id=1]
 [ext_resource path="res://Map/Room.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Ui/Bag.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game_Scenes/Game_Over_World.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ui/Level_ended.tscn" type="PackedScene" id=5]
 
 [node name="World" type="Node2D"]
 scale = Vector2( 2, 2 )
@@ -30,10 +31,16 @@ wait_time = 0.1
 position = Vector2( 227.117, 196.474 )
 
 [node name="Bag" parent="." instance=ExtResource( 3 )]
-position = Vector2( 144, 24 )
+position = Vector2( 0, 24 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 30
 
 [node name="Game_Over_World" parent="." instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 0, 32 )
+z_index = 6
+
+[node name="Level_ended" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 0, 32 )
+z_index = 6

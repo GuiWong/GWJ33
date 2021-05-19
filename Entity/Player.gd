@@ -8,6 +8,14 @@ var is_holding = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+	
+func get_item_in_hand():
+	
+	if $Hand.get_child_count() >= 1:
+		return $Hand.get_child(0)
+	else:
+		return null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -59,14 +67,17 @@ func _process(delta):
 					$Hand.add_child(temp)
 					is_holding = true
 			elif temp.get_class() in [ 'Interactable' , 'Crafter' , 'Storage_Object']:
-				var itm = $Hand.get_child(0)
-				$Hand.remove_child(itm)
+				var itm = get_item_in_hand()
+				
+				if itm:
+					$Hand.remove_child(itm)
 				var new = temp.on_interaction(itm)
 				if new:
 					$Hand.add_child(new)
 					is_holding = true
 				else:
 					is_holding = false
+					
 	if Input.is_action_just_pressed('b'):
 		if is_holding:
 			is_holding = false
