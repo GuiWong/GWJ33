@@ -15,8 +15,8 @@ defence = 1
 strenghts = [ 0, 0 ]
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 0, -20 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -20 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 

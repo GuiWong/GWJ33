@@ -5,12 +5,18 @@ var linked
 var size
 var current = 0
 var items_hook = []
+export var nofoot = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if nofoot:
+		remove_foot()
 
+func remove_foot():
+	$Sprite.region_enabled = true
+	$Sprite.region_rect.size = Vector2(64,64)
+	
 func connect_object(obj : Object_Class):
 	linked = obj
 	

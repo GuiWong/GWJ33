@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Object/Crafter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Object/Sword_Maker.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
+extents = Vector2( 15.0305, 14.882 )
+
+[node name="Sword_Maker" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource( 1 )
+
+[node name="s1" type="Node2D" parent="Slots" index="0"]
+position = Vector2( -8, -24 )
+
+[node name="s2" type="Node2D" parent="Slots" index="1"]
+position = Vector2( 0, -16 )
+
+[node name="s3" type="Node2D" parent="Slots" index="2"]
+position = Vector2( 8, -8 )
+
+[node name="s4" type="Node2D" parent="Slots" index="3"]
+position = Vector2( -8, -8 )

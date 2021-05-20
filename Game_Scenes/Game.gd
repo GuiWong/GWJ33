@@ -30,8 +30,8 @@ func _ready():
 	instanciate_things()
 	
 	
-	fight_manager.connect('special_used',$World,'play_special_anim')
-	#$World/Fight_Animator/Hero_Anims.connect("animation_finished",fight_manager,'animation_waiter')
+	print(fight_manager.connect('special_used',$World,'play_special_anim'))
+	print($World/Fight_Animator/Hero_Anims.connect("animation_finished",fight_manager,'animation_waiter'))
 	
 	
 	
@@ -98,11 +98,12 @@ func on_day():
 func on_evening():
 	
 	#$World/Game_Over_World.visible = true
-	$World/Bag.empty_consumables()
+	
 	$World.processing_rooms = false
 	
 func on_hero_die():
 	
+	$World/Bag.empty_consumables()
 	$World/Game_Over_World.visible = true
 	day_manager.start_evening()
 	
@@ -114,7 +115,7 @@ func on_hero_win():
 	
 	#TODO Do that better
 	
-	hero.base_pv += 2
+	hero.base_pv = 6 + 2 * (level_manager.current_level - 1)
 	
 	
 func on_item_unlock(id):
@@ -227,13 +228,13 @@ func can_buy(id,price):
 		
 		return ret
 		
-	if id in [2,5,6,9]:
+	if id in global.consumables:
 		
 		if $World/Bag.has_space_for(id):
 			
 			ret = 1
 		
-	elif id in [3]:
+	elif id in global.upgrades:
 		
 		if hero.can_equip(id):
 			
@@ -258,6 +259,7 @@ func buy_item(i):
 		$World/Bag.remove_gold(price)
 		$Shop.chest.add_money(price)
 		shelf.remove_item_in_slot(0)
+		shelf.delete_price()
 		
 	elif can_buy(item_id,price) == 2:
 		

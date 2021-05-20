@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Ui/Story_Scene.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/custom_font.tres" type="DynamicFont" id=2]
+
+[node name="Story_Scene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.0862745, 0.133333, 0.25098, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 199.672
+margin_top = 17.5321
+margin_right = 250.672
+margin_bottom = 33.5321
+custom_fonts/font = ExtResource( 2 )
+text = "Story"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 58.4404
+margin_top = 64.2845
+margin_right = 400.44
+margin_bottom = 80.2845
+custom_fonts/font = ExtResource( 2 )
+text = "you just bought a shop in a new Region"
+align = 1
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 19.4801
+margin_top = 88.6347
+margin_right = 361.48
+margin_bottom = 104.635
+custom_fonts/font = ExtResource( 2 )
+text = "This place is suffering from the presence of"
+align = 1
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 33.1162
+margin_top = 116.881
+margin_right = 450.116
+margin_bottom = 132.881
+custom_fonts/font = ExtResource( 2 )
+text = "AN Evil Bad Mean Big Boss"
+align = 1
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 32.1422
+margin_top = 142.205
+margin_right = 460.142
+margin_bottom = 158.205
+custom_fonts/font = ExtResource( 2 )
+text = "And the Army of Monster that infest the land."
+align = 1
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 5.84398
+margin_top = 181.165
+margin_right = 505.844
+margin_bottom = 197.165
+custom_fonts/font = ExtResource( 2 )
+text = "Your Only Client Is this Strange Person people call..."
+align = 1
+
+[node name="Label7" type="Label" parent="."]
+margin_left = -0.97406
+margin_top = 206.49
+margin_right = 499.026
+margin_bottom = 222.49
+custom_fonts/font = ExtResource( 2 )
+text = "THE hero."
+align = 1
+
+[node name="Label8" type="Label" parent="."]
+margin_left = 5.84399
+margin_top = 256.164
+margin_right = 505.844
+margin_bottom = 272.164
+custom_fonts/font = ExtResource( 2 )
+text = "Try to become rich by selling usefull stuff"
+align = 1
+
+[node name="Label9" type="Label" parent="."]
+margin_left = 4.87
+margin_top = 277.592
+margin_right = 504.87
+margin_bottom = 293.592
+custom_fonts/font = ExtResource( 2 )
+align = 1

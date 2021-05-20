@@ -12,6 +12,9 @@ func _ready():
 	
 func connect_objects():
 	
+	
+	#TODO WHEN NEW: 
+	#	ADD COUNT IN update_info_panel
 	$YSort/Info_Panel1.connect_object($YSort/TorchMaker)
 	$YSort/Info_Panel1.build()
 	#info_hooks.append( $YSort/Info_Panel.build() )
@@ -28,6 +31,9 @@ func connect_objects():
 	
 	$YSort/Info_Panel5.connect_object($YSort/Arrow_Maker)
 	$YSort/Info_Panel5.build()
+	
+	$YSort/Info_Panel6.connect_object($YSort/Sword_Maker)
+	$YSort/Info_Panel6.build()
 	#info_hooks.append($YSort/Info_Panel3.build() )
 	
 	chest = $YSort/Chest
@@ -47,7 +53,7 @@ func on_item_unlock(id):
 	
 func update_info_panel(id):
 	
-	for i in range(5): #TODO: count the number of pannels
+	for i in range(6): #TODO: count the number of pannels
 		#print("YSort/Info_Panel" + str(i))
 		#print (get_node('YSort/Info_Panel')
 		var n = get_node("YSort/Info_Panel" + str(i + 1) )
@@ -78,7 +84,7 @@ func buy_item(itm):
 func place_bough_item(itm):
 	
 	var dx = level_manager.rng.randi_range(2,8) * 8
-	var dy = level_manager.rng.randi_range(-6,6) * 8
+	var dy = level_manager.rng.randi_range(-3,6) * 8
 	itm.position = $Hero_path/s3.position + Vector2(dx,dy)
 		
 		

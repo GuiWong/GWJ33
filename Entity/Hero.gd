@@ -2,7 +2,7 @@ extends Fighter
 class_name Hero
 
 var sword_level = 1
-var shield_level = 1
+var shield_level = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#end_animation()
@@ -18,6 +18,14 @@ func apply_equipement():
 func can_equip(id):
 	
 	if id == 3 and shield_level == 0:
+		
+		return true
+		
+	elif id == 13 and sword_level < 2:
+		
+		return true
+		
+	elif id == 14 and shield_level < 2:
 		
 		return true
 		

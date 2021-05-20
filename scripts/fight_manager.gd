@@ -61,6 +61,7 @@ func start_fight():
 	running_anim = 0
 	finished_anim = 0
 	action_queue = []
+	is_finished = false
 	plan_next_attack(0)
 	plan_next_attack(1)
 	
@@ -117,11 +118,25 @@ func plan_next_attack(attacker,instant = false):
 				inserted = true
 			if not inserted:
 				action_queue.append([f,attacker,type])
-			
-func animation_waiter():
-	finished_anim += 1
+				
+				
+func use_heal(attacker):
 	
-	print(animation_queue)
+	fighter[attacker].use_heal()
+	emit_signal('special_used',attacker,0)
+	is_waiting = true
+	#running_anim += 1
+	
+			
+func reset_anims():
+	running_anim = 0
+	finished_anim = 0
+func animation_waiter(heal = false):
+	
+	if not heal:
+		finished_anim += 1
+	
+	#print(animation_queue)
 	
 	if len(animation_queue) >= 1:
 		
@@ -134,13 +149,18 @@ func animation_waiter():
 			
 		animation_queue.remove(0)
 		
-	if finished_anim >= running_anim:
+	if finished_anim >= running_anim and running_anim >= 1:
 		
 		is_waiting = false
 		
 		if is_finished:
 			
-			emit_signal("fight_end")
+			if fighter[0].heal_charges >= 1 and fighter[0].base_pv - fighter[0].pv > fighter[0].heal_strenght:
+				is_waiting = true
+				use_heal(0)
+			else:
+				emit_signal("fight_end")
+				reset_anims()
 		
 		
 	#print('animations : ' + str(finished_anim) + ' - ' + str(running_anim) )
@@ -178,17 +198,21 @@ func solve_attack(attacker):
 	
 	elif type == 1:
 		
-		fighter[attacker].use_heal()
+		#fighter[attacker].use_heal()
+		#emit_signal('special_used',attacker,1)
+		#is_waiting = true
+		#running_anim += 1
+		use_heal(attacker)
 	
 	elif type >= 2:
 		
 		var damage = calc_special_result(type - 2 , attacker)
 		
-		apply_damage(attacker,damage)
+		apply_damage(attacker,damage,true)
 		
 		fighter[attacker].use_special(type - 2)
 		
-		emit_signal('special_used',attacker,type-2)
+		emit_signal('special_used',attacker,type-1)
 		
 		running_anim += 1
 		

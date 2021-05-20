@@ -1,0 +1,312 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Ui/Title_Screen.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/BEBAS.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Ressources/objects.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/custom_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Ressources/items.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 2 )
+
+[node name="How_To_play" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1022.0
+margin_bottom = 601.0
+color = Color( 0.0862745, 0.133333, 0.25098, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 400.0
+margin_right = 432.0
+margin_bottom = 534.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 134.0
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
+text = "Shelf"
+align = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer/VBoxContainer"]
+margin_top = 31.0
+margin_right = 128.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 128, 64 )
+border_color = Color( 0.0862745, 0.133333, 0.25098, 1 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/VBoxContainer"]
+position = Vector2( 60.4674, 57.7599 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 96, 0, 32, 64 )
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 99.0
+margin_right = 128.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 4 )
+text = "Sells item to
+the Hero"
+align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 132.0
+margin_right = 260.0
+margin_bottom = 134.0
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2"]
+margin_right = 128.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
+text = "Bed"
+align = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 31.0
+margin_right = 128.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 128, 64 )
+border_color = Color( 0.0862745, 0.133333, 0.25098, 1 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/VBoxContainer2"]
+position = Vector2( 60.4674, 57.7599 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 32, 64 )
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 99.0
+margin_right = 128.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 4 )
+text = "Sleep Until 
+the next day"
+align = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+margin_left = 323.686
+margin_top = 380.0
+margin_right = 491.686
+margin_bottom = 514.0
+
+[node name="Label2" type="Label" parent="VBoxContainer3"]
+margin_right = 168.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
+text = "Consumables"
+align = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="VBoxContainer3"]
+margin_top = 31.0
+margin_right = 168.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 128, 64 )
+border_color = Color( 0.0862745, 0.133333, 0.25098, 1 )
+
+[node name="Sprite" type="Sprite" parent="VBoxContainer3"]
+position = Vector2( 78.3621, 60.9178 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 16, 16 )
+
+[node name="Label" type="Label" parent="VBoxContainer3"]
+margin_top = 99.0
+margin_right = 168.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 4 )
+text = "Built by 5
+used by the Hero"
+align = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="."]
+margin_left = 500.0
+margin_top = 380.0
+margin_right = 668.0
+margin_bottom = 514.0
+
+[node name="Label2" type="Label" parent="VBoxContainer4"]
+margin_right = 168.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
+text = "Equipement"
+align = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="VBoxContainer4"]
+margin_top = 31.0
+margin_right = 168.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 128, 64 )
+border_color = Color( 0.0862745, 0.133333, 0.25098, 1 )
+
+[node name="Sprite" type="Sprite" parent="VBoxContainer4"]
+position = Vector2( 79.8947, 62.2568 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 80, 16, 16, 16 )
+
+[node name="Label" type="Label" parent="VBoxContainer4"]
+margin_top = 99.0
+margin_right = 168.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 4 )
+text = "Hero only buy 
+1 of each"
+align = 1
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="."]
+margin_left = 399.522
+margin_top = 220.979
+margin_right = 567.522
+margin_bottom = 354.979
+
+[node name="Label2" type="Label" parent="VBoxContainer5"]
+margin_right = 168.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
+text = "Crafters"
+align = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="VBoxContainer5"]
+margin_top = 31.0
+margin_right = 168.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 128, 64 )
+border_color = Color( 0.0862745, 0.133333, 0.25098, 1 )
+
+[node name="Sprite" type="Sprite" parent="VBoxContainer5"]
+position = Vector2( 81.9922, 57.7599 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 96, 64 )
+
+[node name="Label" type="Label" parent="VBoxContainer5"]
+margin_top = 99.0
+margin_right = 168.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 4 )
+text = "Transform Items 
+Into:"
+align = 1
+
+[node name="Controls 1" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label5" type="Label" parent="Controls 1"]
+margin_top = 6.0
+margin_right = 60.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "                    "
+align = 1
+
+[node name="Controls 2" type="HBoxContainer" parent="."]
+margin_left = 2.72075
+margin_top = 42.1715
+margin_right = 240.721
+margin_bottom = 82.1715
+
+[node name="Label5" type="Label" parent="Controls 2"]
+margin_top = 6.0
+margin_right = 60.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "                    "
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 9.523
+margin_top = 50.0
+margin_right = 265.523
+margin_bottom = 155.0
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+margin_right = 256.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
+text = "WASD "
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 31.0
+margin_right = 256.0
+margin_bottom = 35.0
+grow_horizontal = 0
+rect_min_size = Vector2( 256, 0 )
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+margin_top = 39.0
+margin_right = 256.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 1 )
+text = "Arrow  Left"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+margin_top = 70.0
+margin_right = 256.0
+margin_bottom = 74.0
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+margin_top = 78.0
+margin_right = 256.0
+margin_bottom = 105.0
+custom_fonts/font = SubResource( 1 )
+text = "Arrow  Right"
+
+[node name="Label7" type="Label" parent="."]
+margin_left = 688.764
+margin_top = 118.342
+margin_right = 968.764
+margin_bottom = 145.342
+custom_fonts/font = SubResource( 1 )
+text = "Press Any Key To Start"
+align = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+margin_left = 220.0
+margin_top = 50.0
+margin_right = 436.0
+margin_bottom = 155.0
+
+[node name="Label4" type="Label" parent="VBoxContainer2"]
+margin_right = 216.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
+text = "To  Move"
+align = 2
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer2"]
+margin_top = 31.0
+margin_right = 216.0
+margin_bottom = 35.0
+
+[node name="Label5" type="Label" parent="VBoxContainer2"]
+margin_top = 39.0
+margin_right = 216.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 1 )
+text = "To  Grab/Use"
+align = 2
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer2"]
+margin_top = 70.0
+margin_right = 216.0
+margin_bottom = 74.0
+
+[node name="Label6" type="Label" parent="VBoxContainer2"]
+margin_top = 78.0
+margin_right = 216.0
+margin_bottom = 105.0
+custom_fonts/font = SubResource( 1 )
+text = "To   Drop  Held  Item"
+align = 2

@@ -10,6 +10,10 @@ func _ready():
 	#$Sprite.region_rect.position.x = 64
 	pass
 	
+func delete_price():
+	
+	$Label.text = ''
+	
 func add_item(item : Item):
 	add_item_in_slot(0,item)
 	$Label.text = str(item.price * item.quantity)

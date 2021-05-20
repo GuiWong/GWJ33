@@ -1,12 +1,12 @@
-extends Node
+extends Crafter
 
-
-var consumables = [2,5,6,9]
-var upgrades = [3,13,14]
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	add_recipe(Recipe.new(13,1,[11,10,10]))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

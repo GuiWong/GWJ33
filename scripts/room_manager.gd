@@ -75,15 +75,21 @@ func prepare_fight():
 	
 func end_fight():
 	
+	
 	if world.get_hero().pv <= 0:
 		c_step = 6
 		emit_signal('hero_dead')
 	else:
 		c_step = 3
 		
-	if world.get_hero().base_pv - world.get_hero().pv >= 4:
+	#OBSOLETE, now handeled by fight manager
+	#if world.get_hero().base_pv - world.get_hero().pv >= 4:
 		
-		world.get_hero().use_heal()
+		#world.get_hero().use_heal()
+		#fight_manager.
+		#emit_signal('special_used',attacker,1)
+		#is_waiting = true
+		#running_anim += 1
 		
 		
 	is_waiting = false
@@ -125,6 +131,7 @@ func go_to_next_room():
 	if len(room_list) <= c_room + 1:
 		load_end()
 	else:
+		
 		load_room(room_list[c_room + 1])
 	world.current_room_node = ( world.current_room_node + 1 ) % 3
 	comming_content = room_list[c_room].content[0]

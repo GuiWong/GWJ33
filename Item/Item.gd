@@ -47,3 +47,4 @@ func hide_qtty():
 	
 func on_interaction(thing):
 	return true
+	

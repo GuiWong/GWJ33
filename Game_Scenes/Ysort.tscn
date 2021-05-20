@@ -1,15 +1,21 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entity/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Object/TorchMaker.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Object/Shelf.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Object/Potion_Maker.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Object/Info_Panel.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Object/Shield_Maker.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Object/Chest.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Object/Bed.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Object/Bomb_Maker.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Object/Arrow_Maker.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Ressources/BEBAS.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Object/Shield_Maker.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Object/Chest.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Object/Bed.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Object/Bomb_Maker.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Object/Arrow_Maker.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Object/Sword_Maker.tscn" type="PackedScene" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 6 )
 
 [node name="YSort" type="YSort"]
 
@@ -17,7 +23,7 @@
 position = Vector2( 300.805, 319.759 )
 
 [node name="TorchMaker" parent="." instance=ExtResource( 2 )]
-position = Vector2( 592, 112 )
+position = Vector2( 80, 496 )
 
 [node name="Shelf2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 496, 240 )
@@ -32,35 +38,59 @@ position = Vector2( 528, 240 )
 position = Vector2( 560, 240 )
 
 [node name="Potion_Maker" parent="." instance=ExtResource( 4 )]
-position = Vector2( 912, 240 )
+position = Vector2( 592, 112 )
 
 [node name="Info_Panel1" parent="." instance=ExtResource( 5 )]
-position = Vector2( 592, 80 )
+position = Vector2( 64, 480 )
+
+[node name="Fire_Hazard" parent="." instance=ExtResource( 5 )]
+position = Vector2( 128, 480 )
+
+[node name="Label" type="Label" parent="Fire_Hazard"]
+margin_left = -30.5174
+margin_top = -61.0348
+margin_right = 29.4826
+margin_bottom = -4.03476
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Removed
+due to
+fire 
+hazard"
+align = 1
 
 [node name="Info_Panel2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 960, 240 )
+position = Vector2( 592, 84 )
+nofoot = true
 
-[node name="Shield_Maker" parent="." instance=ExtResource( 6 )]
-position = Vector2( 112, 240 )
+[node name="Shield_Maker" parent="." instance=ExtResource( 7 )]
+position = Vector2( 912, 112 )
 
 [node name="Info_Panel3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 64, 240 )
+position = Vector2( 960, 112 )
 
-[node name="Chest" parent="." instance=ExtResource( 7 )]
+[node name="Chest" parent="." instance=ExtResource( 8 )]
 position = Vector2( 464, 368 )
 
-[node name="Bed" parent="." instance=ExtResource( 8 )]
+[node name="Bed" parent="." instance=ExtResource( 9 )]
 position = Vector2( 432, 464 )
 
-[node name="Bomb_Maker" parent="." instance=ExtResource( 9 )]
+[node name="Bomb_Maker" parent="." instance=ExtResource( 10 )]
 position = Vector2( 336, 112 )
 
 [node name="Info_Panel4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 336, 80 )
+position = Vector2( 336, 84 )
+nofoot = true
 
-[node name="Arrow_Maker" parent="." instance=ExtResource( 10 )]
+[node name="Arrow_Maker" parent="." instance=ExtResource( 11 )]
 position = Vector2( 432, 112 )
-slots = 1
 
 [node name="Info_Panel5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 432, 80 )
+position = Vector2( 432, 84 )
+nofoot = true
+
+[node name="Sword_Maker" parent="." instance=ExtResource( 12 )]
+position = Vector2( 912, 240 )
+
+[node name="Info_Panel6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 960, 240 )

@@ -16,7 +16,7 @@ var current_level = 1
 
 #signal next_level
 
-var debug = true
+var debug = false
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -119,7 +119,8 @@ func gen_level_1():
 		
 		level.append(e2)
 		
-	level.append(Room.new(2,2,[1,1],0))
+	#TODO AFTER ALPHA BUILD
+	#level.append(Room.new(2,2,[1,1],0))
 	
 	var bl3 = gen_from_pool(2,2,2, [ [0,1] , [0,2] ] )
 	
@@ -130,7 +131,7 @@ func gen_level_1():
 		
 	level.append(Room.new(2,2,[3,0],0))
 		
-	#print level
+	print (level)
 	return level
 	
 	
@@ -178,8 +179,8 @@ func gen_level_test():
 	
 #	level.append(Room.new(3,3,[1,1],0))
 	
-	level.append(Room.new(3,3,[0,3],0))
-	level.append(Room.new(3,3,[0,3],0))
+	level.append(Room.new(3,3,[0,5],0))
+	level.append(Room.new(3,3,[0,5],0))
 	
 	level.append(Room.new(3,3,[0,4],0))
 	level.append(Room.new(3,3,[0,4],0))

@@ -100,5 +100,5 @@ margin_bottom = 20.0
 [node name="Panel2" type="Panel" parent="."]
 show_behind_parent = true
 margin_left = 256.0
-margin_right = 412.0
+margin_right = 512.0
 margin_bottom = 20.0

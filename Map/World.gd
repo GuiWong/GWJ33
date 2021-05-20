@@ -72,17 +72,22 @@ func _process(delta):
 func on_special_anim_ended():
 	
 	#TODO BETTER THAN THAT
-	print('EHY!!!?')
+	#print('EHY!!!?')
 	fight_manager.animation_waiter()
 
 func play_special_anim(a,i):
 	
 	if a == 0:
+		
 		if i == 0:
+			
+			$Fight_Animator/Hero_Anims.play('Potion')
+			
+		elif i == 1:
 		
 			$Fight_Animator/Hero_Anims.play("Bow")
 	
-		elif i == 1:
+		elif i == 2:
 		
 		
 			$Fight_Animator/Hero_Anims.play("Bomb")
@@ -171,6 +176,7 @@ func stop_timer():
 	$Timer.stop()
 	
 func stop():
+	
 	get_current_room().position.x = 0
 	get_next_room().position.x = 256
 	get_last_room().position.x = -256

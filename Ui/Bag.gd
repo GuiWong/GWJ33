@@ -97,6 +97,12 @@ func empty_consumables():
 	potion = 0
 	$Inventory/Potion/Label.text = str(potion)
 	
+	arrow = 0
+	$Inventory/Arrow/Label.text = str(potion)
+	
+	bomb = 0
+	$Inventory/Bomb/Label.text = str(potion)
+	
 	
 func has_space_for(id):
 	
