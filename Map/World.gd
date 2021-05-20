@@ -7,7 +7,7 @@ var current_room_node = 0
 
 
 #TODO SOLVE THAT SHITTY THING!!!!!!!!!!
-var monster_nodes = [null,null,null,null]
+var monster_nodes = [null,null,null,null,null,null]
 
 var processing_rooms = false
 
@@ -68,6 +68,24 @@ func _process(delta):
 	
 	if processing_rooms:
 		room_manager.solve(delta)
+		
+func on_special_anim_ended():
+	
+	#TODO BETTER THAN THAT
+	print('EHY!!!?')
+	fight_manager.animation_waiter()
+
+func play_special_anim(a,i):
+	
+	if a == 0:
+		if i == 0:
+		
+			$Fight_Animator/Hero_Anims.play("Bow")
+	
+		elif i == 1:
+		
+		
+			$Fight_Animator/Hero_Anims.play("Bomb")
 	
 func instance_content():
 	
@@ -90,15 +108,6 @@ func get_monster_node(id):
 	
 	return monster_nodes[id]
 
-func gen_lot_of_room(i):
-	#var romlist = []
-	#for a in range(i):
-	#	romlist.append(level_manager.Room.new(1,1,[0,a % 2],0))
-	#return romlist
-	
-	pass
-	
-	
 	
 func get_hero():
 	return $Hero.get_child(0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game_Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Game_Scenes/Shop.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Game_Scenes/Ysort.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Map/World.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game_Scenes/Dawn_Scene.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Item/Item.tscn" type="PackedScene" id=7]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -60,3 +61,17 @@ wait_time = 0.2
 [node name="Dawn_Scene" parent="." instance=ExtResource( 6 )]
 visible = false
 z_index = 20
+
+[node name="Debug" type="Node2D" parent="."]
+
+[node name="Item" parent="Debug" instance=ExtResource( 7 )]
+position = Vector2( 463.423, 272.722 )
+id = 5
+quantity = 5
+price = 1
+
+[node name="Item2" parent="Debug" instance=ExtResource( 7 )]
+position = Vector2( 495.121, 272.722 )
+id = 9
+quantity = 5
+price = 1

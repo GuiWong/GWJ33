@@ -30,11 +30,19 @@ func _ready():
 	instanciate_things()
 	
 	
+	fight_manager.connect('special_used',$World,'play_special_anim')
+	#$World/Fight_Animator/Hero_Anims.connect("animation_finished",fight_manager,'animation_waiter')
+	
+	
 	
 	$World.store_loot(item_manager.create_item(0,1))
 	$World.store_loot(item_manager.create_item(0,1))
 	$World.store_loot(item_manager.create_item(1,1))
 	$Timer.connect("timeout",self,'sell_loop')
+	
+	
+	#May be bad, already have signal hero win
+	#level_manager.connect('next_level',self,'on_next_level')
 	
 	
 	day_manager.connect('dawn_start',self,'on_dawn')
@@ -60,6 +68,7 @@ func on_dawn():
 	
 	$World/Game_Over_World.visible = false
 	$World/Level_ended.visible = false
+	$World/Level_ended/Label2.text = str(level_manager.current_level)
 	
 	hero.reset()
 	hero.apply_equipement()
@@ -102,6 +111,10 @@ func on_hero_win():
 	$World/Level_ended.visible = true
 	day_manager.start_evening()
 	level_manager.go_to_next_level()
+	
+	#TODO Do that better
+	
+	hero.base_pv += 2
 	
 	
 func on_item_unlock(id):

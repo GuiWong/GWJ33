@@ -100,4 +100,17 @@ func on_interaction(item):
 		
 	return false
 		
+func can_interact(item):
+	
+	if item != null and check_reagent(item):
 		
+		return true
+		
+	elif get_item_in_slot(product_pos) != null:
+		
+		return true
+		
+	else:
+		
+		return false
+		 

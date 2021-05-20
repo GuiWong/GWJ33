@@ -1,10 +1,91 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Map/World.gd" type="Script" id=1]
 [ext_resource path="res://Map/Room.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Ui/Bag.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game_Scenes/Game_Over_World.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ui/Level_ended.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Ressources/Projectiles.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Bomb"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 105.082, 96 ), Vector2( 128, 64 ), Vector2( 144, 64 ), Vector2( 160, 80 ), Vector2( 177.323, 93.3264 ), Vector2( 181.006, 109.901 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 4, 4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.85, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Bow"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 0.535887 ),
+"update": 0,
+"values": [ Vector2( 96, 96 ), Vector2( 224, 96 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 4.14106 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [node name="World" type="Node2D"]
 scale = Vector2( 2, 2 )
@@ -44,3 +125,17 @@ z_index = 6
 visible = false
 position = Vector2( 0, 32 )
 z_index = 6
+
+[node name="Fight_Animator" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Fight_Animator"]
+position = Vector2( 96, 96 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Hero_Anims" type="AnimationPlayer" parent="Fight_Animator"]
+autoplay = "Bow"
+anims/Bomb = SubResource( 1 )
+anims/Bow = SubResource( 2 )
+[connection signal="animation_finished" from="Fight_Animator/Hero_Anims" to="." method="on_special_anim_ended"]

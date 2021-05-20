@@ -1,12 +1,15 @@
 extends Node
 
 signal fight_end
+signal special_used(a,i)
 var combat_tick = 0
 var is_waiting = false
+var is_finished = false
 
 var fighter = []
 
 var action_queue = []
+var animation_queue = []
 
 var running_anim = 0
 var finished_anim = 0
@@ -17,11 +20,14 @@ func _ready():
 
 func calc_attack_weight(f_id):
 	
-	return max(0,fighter[f_id].attack - fighter[abs(f_id - 1)].armor_class[0]) * 5
+	return max(0,fighter[f_id].attack - fighter[abs(f_id - 1)].armor_class[0]) * 5 + 1
 	
 func calc_special_attack_weight(f_id,att_c):
 	
 	if fighter[f_id].charges[att_c] >= 1:
+		
+		#print('Fighter ' + str(f_id) + ' has ' +str(fighter[f_id].charges[att_c]) +' charges usable for special attack ' +str(att_c))
+		
 		return fighter[f_id].charges[att_c] + 2 * fighter[abs(f_id - 1)].armor_class[0] - 3 * fighter[abs(f_id - 1)].armor_class[att_c + 1]
 	else:
 		return 0
@@ -62,6 +68,12 @@ func start_fight():
 
 func choose_action(attacker):
 	
+	
+	#if attacker == 1:
+		
+	#	return 0
+		
+		
 	var weight = calc_attack_weight(attacker)
 	var type = 0
 	
@@ -72,7 +84,7 @@ func choose_action(attacker):
 		
 	for sp_t in range(2):
 		
-		n_w = calc_special_attack_weight(sp_t,attacker)
+		n_w = calc_special_attack_weight(attacker,sp_t)
 		if n_w > weight:
 			weight = n_w
 			type = 2 + sp_t
@@ -81,6 +93,8 @@ func choose_action(attacker):
 		
 	#TODO: Special Attack
 	#for i in range(2)
+	
+	#print(attacker, type , weight)
 	
 	return type
 		
@@ -106,8 +120,27 @@ func plan_next_attack(attacker,instant = false):
 			
 func animation_waiter():
 	finished_anim += 1
+	
+	print(animation_queue)
+	
+	if len(animation_queue) >= 1:
+		
+		if animation_queue[0][1] == 0:	
+			fighter[animation_queue[0][0] ].play_hit()
+			running_anim += 1
+		else:
+			fighter[animation_queue[0][0] ].play_die()
+			running_anim += 1
+			
+		animation_queue.remove(0)
+		
 	if finished_anim >= running_anim:
+		
 		is_waiting = false
+		
+		if is_finished:
+			
+			emit_signal("fight_end")
 		
 		
 	#print('animations : ' + str(finished_anim) + ' - ' + str(running_anim) )
@@ -138,7 +171,7 @@ func solve_attack(attacker):
 			damage = raw
 	#print(fighter[attacker].name +' is attacking for ' + str(damage) +' damage')
 	
-		apply_damage(attacker,damage)
+		apply_damage(attacker,damage,true)
 			
 		fighter[attacker].play_attack()
 		running_anim += 1
@@ -155,31 +188,49 @@ func solve_attack(attacker):
 		
 		fighter[attacker].use_special(type - 2)
 		
+		emit_signal('special_used',attacker,type-2)
+		
+		running_anim += 1
+		
 		
 	
 		
 	
 	
-func apply_damage(attacker,damage):
+func apply_damage(attacker,damage,instant = false):
 	
 	fighter[abs(attacker-1)].take_damage(damage)
 	
 	if fighter[abs(attacker-1)].pv <= 0:
 		
-		emit_signal("fight_end")
+		is_finished = true
+		#emit_signal("fight_end")
 		is_waiting = true
-		fighter[abs(attacker-1)].play_die()
-		running_anim += 1
+		
+		if instant:
+			
+			fighter[abs(attacker-1)].play_die()
+			running_anim += 1
+		else:
+			animation_queue.append([abs(attacker-1),1])
+		
+		
 		
 	else:
 		
 		if damage == 0:
 				
 			fighter[abs(attacker-1)].play_parry()
+			running_anim += 1
 							
 		else:
-			fighter[abs(attacker-1)].play_hit()
-			running_anim += 1
+			
+			if instant:
+				fighter[abs(attacker-1)].play_hit()
+				running_anim += 1
+			else:
+				animation_queue.append([abs(attacker-1),0])
+			
 			
 			
 func calc_special_result(sp_id,attacker):

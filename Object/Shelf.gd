@@ -23,13 +23,29 @@ func add_item(item : Item):
 	
 func on_interaction(item ):
 	
-	#print(get_item_in_slot(0))
-	if item != null and get_item_in_slot(0) == null:
+	if can_interact(item):
+	
+		
+		
 		
 		add_item(item)
 		return false
 	else:
 		return item
+			
+			
+func can_interact(item):
+	
+	if item != null:
+	
+		if get_item_in_slot(0) == null and (item.id in global.consumables or item.id in global.upgrades):
+		
+			return true
+		
+	else:
+		
+		return false
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

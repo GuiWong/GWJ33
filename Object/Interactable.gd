@@ -15,3 +15,7 @@ func _ready():
 func on_interaction(item):
 	emit_signal("interacted")
 	return item
+	
+func can_interact(item):
+	
+	return true

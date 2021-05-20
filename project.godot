@@ -95,6 +95,7 @@ item_manager="*res://scripts/item_manager.gd"
 progression_manager="*res://scripts/progression_manager.gd"
 level_manager="*res://scripts/level_manager.gd"
 day_manager="*res://scripts/day_manager.gd"
+global="*res://scripts/global.gd"
 
 [display]
 

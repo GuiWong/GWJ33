@@ -14,21 +14,30 @@ var monsters = []
 var monster_loot = [ [ 1 ] ,
 					[ 0 ],
 					[ 4 ],
-					[ 8 ]
+					[ 8 ],
+					[ 10 ],
+					[ 11 ]
 					
 					]
 					
-var monster_gold = [2,1,5,10]
+var monster_gold = [2,1,5,6,15,5]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_monsters()
 
 
 func load_monsters():
+	
+	
+	# Places to update:
+	#- $World add a null monster node monster nodes
+		#TODO: Create them from list
 	monsters.append(load('res://Entity/Monsters/Sprout.tscn'))
 	monsters.append(load('res://Entity/Monsters/Slime.tscn'))
 	monsters.append(load('res://Entity/Monsters/Skeleton.tscn'))
 	monsters.append(load('res://Entity/Monsters/Boomer.tscn'))
+	monsters.append(load('res://Entity/Monsters/Rock.tscn'))
+	monsters.append(load('res://Entity/Monsters/Horned_Bat.tscn'))
 
 func create_monster_node(id):
 	

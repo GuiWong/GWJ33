@@ -36,3 +36,13 @@ func remove_item_in_slot(i):
 func on_content_changed():
 	
 	pass
+	
+func can_interact(item):
+	
+	if item != null:
+		
+		return true
+		
+	else:
+		
+		return false
