@@ -38,7 +38,7 @@ func reset_recipe_match():
 		
 		recipe_match[a] = true
 		
-	print( recipe_match)
+	#print( recipe_match)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -92,14 +92,14 @@ func check_completion():
 	
 	for i in range(len(recipe_list)):
 		
-		print('step: ' + str(current_step) + 'recipe lenght : ' + str(len(recipe_list[i].reagents)))
+	#	print('step: ' + str(current_step) + 'recipe lenght : ' + str(len(recipe_list[i].reagents)))
 		if current_step == len(recipe_list[i].reagents) and recipe_match[i]:
 			
 			solve_craft(i)
 
 func on_interaction(item):
 	
-	print (item)
+	#print (item)
 	if item != null:
 		if check_reagent(item):
 			add_reagent(item)
@@ -109,7 +109,7 @@ func on_interaction(item):
 			return item
 	elif product_pos != 0:
 		
-		print('product done')
+	#	print('product done')
 		var new = get_item_in_slot(product_pos)
 		remove_item_in_slot(product_pos)
 		reset_recipe_match()

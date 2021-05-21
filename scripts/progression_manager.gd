@@ -36,6 +36,9 @@ func discover(id):
 		
 func finish_game():
 	
+	#if OS.has_feature('Alpha_Build'):
+		#get_tree().change_scene('res://Game_Scenes/Game_Finished.tscn')
+	#else:
 	get_tree().change_scene('res://Game_Scenes/Game_Finished.tscn')
 	
 func loose_game():
@@ -64,10 +67,10 @@ func pause(value):
 	
 #Very Temporyry !!!	
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		finish_game()
+	#if Input.is_action_just_pressed("ui_accept"):
+	#	finish_game()
 		
-	elif Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel"):
 		paused = not paused
 		
 		pause(paused)

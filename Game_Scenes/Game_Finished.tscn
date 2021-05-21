@@ -3,7 +3,7 @@
 [ext_resource path="res://Game_Scenes/Game_Finished.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/custom_font.tres" type="DynamicFont" id=2]
 
-[node name="Proto_Finished" type="Control"]
+[node name="Game_Finished" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_scale = Vector2( 2, 2 )
