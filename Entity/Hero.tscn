@@ -96,18 +96,17 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="Hero" instance=ExtResource( 1 )]
+[node name="Hero" index="0" instance=ExtResource( 1 )]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
 max_speed = 125
 pv = 6
-base_pv = 10
+base_pv = 6
 attack = 1
 base_attack = 1
 attack_time = 5
 base_attack_time = 5
-heal_charges = 2
 strenghts = [ 1, 4 ]
 
 [node name="Sprite" parent="." index="0"]
