@@ -42,6 +42,7 @@ func reset():
 	attack = base_attack
 	attack_time = base_attack_time
 	update_pv_bar()
+	$AnimationPlayer3.play('resurect')
 	
 func update_pv_bar():
 	

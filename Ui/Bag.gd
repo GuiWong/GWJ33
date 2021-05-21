@@ -5,6 +5,7 @@ var gold = 0
 
 var potion = 0
 var potion_max = 1
+var potion_strenght = 0
 
 var torch = 0
 var torch_max = 5
@@ -45,6 +46,16 @@ func store_consumable(id,q):
 			
 			potion = max(potion + q, potion_max)
 			$Inventory/Potion/Label.text = str(potion)
+			$Inventory/Potion/Sprite.region_rect.position=item_manager.get_item_sprite(id)
+			potion_strenght = 4
+			
+			
+		elif id == 15:
+			
+			potion = max(potion + q, potion_max)
+			$Inventory/Potion/Label.text = str(potion)
+			$Inventory/Potion/Sprite.region_rect.position=item_manager.get_item_sprite(id)
+			potion_strenght = 8
 			
 		elif id == 2:
 			
@@ -106,7 +117,7 @@ func empty_consumables():
 	
 func has_space_for(id):
 	
-	if id == 6 and potion < potion_max:
+	if (id == 6 or id == 15 )and potion < potion_max:
 		
 		return true
 	

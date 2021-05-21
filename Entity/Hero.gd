@@ -7,6 +7,10 @@ var shield_level = 0
 func _ready():
 	#end_animation()
 	pass
+	
+func resurect():
+	
+	$AnimationPlayer3.play('resurect')
 
 func apply_equipement():
 	
@@ -40,5 +44,19 @@ func equip_item(id):
 		shield_level = 1
 		
 		$Sprite3.visible = true
+		
+	elif id == 13:
+		
+		sword_level = 2
+		
+		
+func use_heal():
+	
+	if heal_charges >= 1:
+		heal(heal_strenght)
+		heal_charges -= 1
+		emit_signal("charge_used",0,heal_charges)
+		update_pv_bar()
+		$AnimationPlayer3.play("resurect")
 		
 

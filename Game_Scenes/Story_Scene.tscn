@@ -23,72 +23,73 @@ custom_fonts/font = ExtResource( 2 )
 text = "Story"
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 58.4404
-margin_top = 64.2845
-margin_right = 400.44
-margin_bottom = 80.2845
+margin_left = 62.5415
+margin_top = 38.6527
+margin_right = 421.541
+margin_bottom = 54.6527
 custom_fonts/font = ExtResource( 2 )
 text = "you just bought a shop in a new Region"
 align = 1
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 19.4801
-margin_top = 88.6347
-margin_right = 361.48
-margin_bottom = 104.635
+margin_left = 23.5812
+margin_top = 63.0029
+margin_right = 440.581
+margin_bottom = 79.0032
 custom_fonts/font = ExtResource( 2 )
 text = "This place is suffering from the presence of"
 align = 1
 
 [node name="Label4" type="Label" parent="."]
-margin_left = 33.1162
-margin_top = 116.881
-margin_right = 450.116
-margin_bottom = 132.881
+margin_left = 37.2173
+margin_top = 91.2492
+margin_right = 454.217
+margin_bottom = 107.249
 custom_fonts/font = ExtResource( 2 )
 text = "AN Evil Bad Mean Big Boss"
 align = 1
 
 [node name="Label5" type="Label" parent="."]
-margin_left = 32.1422
-margin_top = 142.205
-margin_right = 460.142
-margin_bottom = 158.205
+margin_left = 36.2433
+margin_top = 116.573
+margin_right = 470.243
+margin_bottom = 132.573
 custom_fonts/font = ExtResource( 2 )
 text = "And the Army of Monster that infest the land."
 align = 1
 
 [node name="Label6" type="Label" parent="."]
-margin_left = 5.84398
-margin_top = 181.165
-margin_right = 505.844
-margin_bottom = 197.165
+margin_left = 9.94505
+margin_top = 155.533
+margin_right = 509.945
+margin_bottom = 171.533
 custom_fonts/font = ExtResource( 2 )
 text = "Your Only Client Is this Strange Person people call..."
 align = 1
 
 [node name="Label7" type="Label" parent="."]
-margin_left = -0.97406
-margin_top = 206.49
-margin_right = 499.026
-margin_bottom = 222.49
+margin_left = 3.12701
+margin_top = 180.858
+margin_right = 503.127
+margin_bottom = 196.858
 custom_fonts/font = ExtResource( 2 )
 text = "THE hero."
 align = 1
 
 [node name="Label8" type="Label" parent="."]
-margin_left = 5.84399
-margin_top = 256.164
-margin_right = 505.844
-margin_bottom = 272.164
+margin_left = 9.94506
+margin_top = 230.532
+margin_right = 509.945
+margin_bottom = 246.532
 custom_fonts/font = ExtResource( 2 )
 text = "Try to become rich by selling usefull stuff"
 align = 1
 
 [node name="Label9" type="Label" parent="."]
 margin_left = 4.87
-margin_top = 277.592
+margin_top = 279.643
 margin_right = 504.87
-margin_bottom = 293.592
+margin_bottom = 295.643
 custom_fonts/font = ExtResource( 2 )
+text = "Press  left Arrow to continue"
 align = 1

@@ -13,6 +13,7 @@ class Room:
 		
 var rng 
 var current_level = 1
+var last_level = 5
 
 #signal next_level
 
@@ -24,6 +25,36 @@ func _ready():
 	rng.seed = 123
 	
 	
+func get_level_color(i = null):
+	
+	if i == null:
+		i = current_level
+	
+	if i == 1:# or i == 0:
+		
+		return Color(0.286275, 0.243137, 0.694118)
+		
+	elif i == 2:
+		
+		return Color(0.172549, 0.627451, 0.898039)
+		
+	elif i == 3 or i == 4:
+		
+		return Color(0.85098, 0.694118, 0.078431)
+		
+	elif i == 5:
+		
+		Color(0.937755, 0.964844, 0.097992)
+		
+	else:
+		
+		return Color(1,1,1)
+	
+func has_finished_game():
+	
+	
+	return current_level == last_level
+	
 func go_to_next_level():
 	
 	current_level += 1
@@ -34,7 +65,7 @@ func gen_level_n():
 	
 	if debug:
 		
-		return gen_level_test()
+		return gen_level_3()
 	
 	if current_level == 1:
 		
@@ -47,6 +78,11 @@ func gen_level_n():
 	elif current_level == 3:
 		
 		return gen_level_3()
+		
+	elif current_level == 4:
+		
+		return gen_level_4()
+	
 		
 	else:
 		
@@ -105,15 +141,22 @@ func gen_level_1():
 	
 	level.append(gen_shop_room())
 	
-	var bl = gen_from_pool(6,1,1, [ [0,0] , [0,1] ] )
+	var e_content = gen_content_list_from_pool(2, [ [0,0] , [0,1] ])
+	e_content = e_content + [[0,0] , [0,1] , [0,0] ]
+	#print(e_content)
+	var bl = gen_from_list(1,1, e_content )
 	
 	for e in bl:
 		
 		level.append(e)
 		
 	
-		
-	var bl2 = gen_from_pool(3,2,2, [ [0,1] , [0,2] ] )
+	
+	
+	e_content = gen_content_list_from_pool(2,	[ [0,1] , [0,2] ]) #, [0,1] ] )
+	
+	e_content = e_content + [ [0,1] , [0,1] , [0,2] ]
+	var bl2 = gen_from_list(2,2, e_content )
 	
 	for e2 in bl2:
 		
@@ -122,16 +165,16 @@ func gen_level_1():
 	#TODO AFTER ALPHA BUILD
 	#level.append(Room.new(2,2,[1,1],0))
 	
-	var bl3 = gen_from_pool(2,2,2, [ [0,1] , [0,2] ] )
+	#var bl3 = gen_from_pool(2,2,2, [ [0,1] , [0,2] ] )
 	
 	
-	for e3 in bl3:
+	#for e3 in bl3:
 		
-		level.append(e3)
+	#	level.append(e3)
 		
 	level.append(Room.new(2,2,[3,0],0))
 		
-	print (level)
+
 	return level
 	
 	
@@ -141,16 +184,22 @@ func gen_level_2():
 	
 	level.append(gen_shop_room())
 	
-	var pack = gen_from_pool(3,1,1,[ [0,0] , [0,1] ])
+	
+	
+	var e_content = gen_content_list_from_pool(2,[ [0,0] , [0,1] ])
+	e_content = e_content + [ [0,0] , [0,1]]
+	
+	#var pack = gen_from_pool(3,1,1,[ [0,0] , [0,1] ])
+	var pack = gen_from_list(1,1,e_content)
 	
 	for r in pack:
 		
 		level.append(r)
 		
 	
-	var pack_l = gen_content_list_from_pool( 2 , [ [0,2] , [0,3] ] )
+	var pack_l = gen_content_list_from_pool( 1 , [ [0,2] , [0,3] ])
 		
-	pack_l = pack_l + [ [0,2] , [0,2] , [0,3] , [0,3] ]
+	pack_l = pack_l +[ [0,2] , [0,2] , [0,2] , [0,3] , [0,3] ]
 	
 	#print (pack_l)
 	pack = gen_from_list( 2 , 2 , pack_l )
@@ -179,13 +228,13 @@ func gen_level_test():
 	
 #	level.append(Room.new(3,3,[1,1],0))
 	
-	level.append(Room.new(3,3,[0,5],0))
-	level.append(Room.new(3,3,[0,5],0))
+	level.append(Room.new(2,2,[0,1],0))
+	level.append(Room.new(2,2,[0,1],0))
 	
-	level.append(Room.new(3,3,[0,4],0))
-	level.append(Room.new(3,3,[0,4],0))
+	level.append(Room.new(2,2,[0,1],0))
+	level.append(Room.new(2,2,[0,1],0))
 	
-	level.append(Room.new(1,1,[3,0],0))
+	level.append(Room.new(2,2,[3,0],0))
 	
 	return level
 		
@@ -195,14 +244,33 @@ func gen_level_3():
 	var level = []
 	
 	level.append(gen_shop_room())
-	
-	var pack = gen_from_list( 3 , 3 , [ [0,2] , [0,0] , [0,5] , [0,0] ])
+							#TODO: Forest Sprite
+	var pack = gen_from_list( 1 , 1 , [ [0,2] , [0,3] , [0,5] , [0,0] ])
 	
 	for r in pack:
 		
 		level.append(r)
 		
-	pack = gen_from_list( 3 , 3 , [ [0,4] , [0,4] , [0,2] , [0,5] , [0,4]])
+	pack = gen_from_list( 3 , 3 , [ [0,4] , [0,4] , [0,2] , [0,2] , [0,5] , [0,4]])
+		
+	for r in pack:
+		
+		level.append(r)
+	
+	
+	level.append(Room.new(1,1,[3,0],0))
+	
+	return level
+	
+	
+func gen_level_4():
+	
+	var level = []
+	
+	level.append(gen_shop_room())
+	
+	
+	var pack = gen_from_list( 2 , 2 , [ [0,5] , [0,5] , [0,5] , [0,5] , [0,2] , [0,2] , [0,4] , [0,4]])
 		
 	for r in pack:
 		

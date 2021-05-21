@@ -24,7 +24,7 @@ func get_item_selection(item):
 	var itms = []
 	var obj = []
 	
-	print ('choosing a target between ' + str(len(liste)) +' candidates')
+	#print ('choosing a target between ' + str(len(liste)) +' candidates')
 	
 	#for e in liste:
 		
@@ -50,7 +50,7 @@ func get_item_selection(item):
 				
 				obj.append(e)
 			
-	print(str(len(itms)) +' Items - ' +str(len(obj)) +' objects ')
+	#print(str(len(itms)) +' Items - ' +str(len(obj)) +' objects ')
 		
 	var selected 
 		

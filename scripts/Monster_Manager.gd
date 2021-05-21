@@ -23,8 +23,8 @@ var monster_loot = [ [ 1 ] ,
 var monster_gold = [2,1,5,6,15,5]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_monsters()
-
+	#load_monsters()
+	pass
 
 func load_monsters():
 	

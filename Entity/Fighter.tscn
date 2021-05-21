@@ -1,16 +1,122 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entity/Fighter.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/animation/Sword_attack.tres" type="Animation" id=3]
 [ext_resource path="res://Entity/PvBar.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "parry"
 length = 0.4
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "die"
+length = 1.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.4, 0.45, 0.6, 0.65, 0.8, 0.85, 1, 1.05, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.8, 0.8 ), Vector2( 0.6, 0.6 ), Vector2( 0.7, 0.7 ), Vector2( 0.5, 0.5 ), Vector2( 0.6, 0.6 ), Vector2( 0.4, 1 ), Vector2( 0.1, 1.5 ), Vector2( -0.05, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.4 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 0.270588 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 0.156863 ), Color( 1, 0, 0, 0.588235 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 0, 0, 0.392157 ), Color( 1, 0, 0, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_pv_bar"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 4.43828 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 10 ), Vector2( 0, 10 ), Vector2( 0, 64 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("PvBar")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "update_value"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "hit"
@@ -54,7 +160,72 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "resurect"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 4.43828 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 10 ), Vector2( 0, 10 ), Vector2( 0, 64 ) ]
+}
+
 [node name="Fighter" instance=ExtResource( 1 )]
+position = Vector2( 0, 64 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -62,12 +233,16 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 anims/attack = ExtResource( 3 )
-anims/parry = SubResource( 2 )
+anims/parry = SubResource( 1 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="3"]
-anims/die = SubResource( 3 )
-anims/hit = SubResource( 4 )
+anims/die = SubResource( 2 )
+anims/hit = SubResource( 3 )
 
-[node name="PvBar" parent="." index="4" instance=ExtResource( 4 )]
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="." index="4"]
+anims/hit = SubResource( 4 )
+anims/resurect = SubResource( 5 )
+
+[node name="PvBar" parent="." index="5" instance=ExtResource( 4 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="end_animation"]
 [connection signal="animation_finished" from="AnimationPlayer2" to="." method="end_animation"]

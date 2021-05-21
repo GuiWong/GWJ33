@@ -55,17 +55,25 @@ func load_fighter(f1 : Fighter,f2 : Fighter):
 	
 #	print(f2.get_signal_connection_list('animation_done')[0].get('method' )
 	
-func start_fight():
+func end_fight():
 	
 	combat_tick = 0
 	running_anim = 0
 	finished_anim = 0
 	action_queue = []
 	is_finished = false
-	plan_next_attack(0)
-	plan_next_attack(1)
-	
 	is_waiting = false
+	
+func start_fight():
+	
+	
+	if is_finished:
+		pass
+	else:
+		end_fight()
+		plan_next_attack(0)
+		plan_next_attack(1)
+	
 
 func choose_action(attacker):
 	

@@ -64,17 +64,21 @@ func update_info_panel(id):
 func get_hero_path(i):
 	return $Hero_path.get_child(i).position
 	
+func cant_buy():
+	
+	progression_manager.loose_game()
+	
 func buy_item(itm):
 	
 	$Items.add_child(itm)
 	
 	if not chest.get_item_in_slot(0):
 		
-		pass 
+		cant_buy() 
 		
 	elif chest.get_item_in_slot(0).quantity - itm.price < 0:
 		
-		pass
+		cant_buy()
 		
 	else:
 		chest.remove_item_count_in_slot(0,itm.price)

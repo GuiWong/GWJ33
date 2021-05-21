@@ -30,6 +30,15 @@ func get_class():
 func add_recipe(recip):
 	recipe_list.append(recip)
 	recipe_match.append(true)
+	
+func reset_recipe_match():
+	
+	current_step = 0
+	for a in len(recipe_match):
+		
+		recipe_match[a] = true
+		
+	print( recipe_match)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,7 +51,9 @@ func _ready():
 func check_reagent(item):
 	
 	for n in range(len(recipe_list)):
-		if recipe_match[n] and item.id == recipe_list[n].reagents[current_step]:
+		if len(recipe_list[n].reagents) <= current_step:
+			pass
+		elif recipe_match[n] and item.id == recipe_list[n].reagents[current_step]:
 			return true
 	return false
 	
@@ -51,7 +62,10 @@ func add_reagent(item):
 	add_item_in_slot(current_step,item)
 	
 	for i in range(len(recipe_list)):
-		if item.id == recipe_list[i].reagents[current_step]:
+		
+		if current_step >= len(recipe_list[i].reagents):
+			recipe_match[i] = false
+		elif item.id == recipe_list[i].reagents[current_step]:
 			recipe_match[i] = true
 		else:
 			recipe_match[i] = false
@@ -70,6 +84,8 @@ func solve_craft(c_n):
 		add_item_in_slot(len(recipe_list[c_n].reagents),item_manager.create_item(recipe_list[c_n].result,recipe_list[c_n].qtty))
 		current_step = 0
 		product_pos = len(recipe_list[c_n].reagents)
+		reset_recipe_match()
+		
 		#get_item_in_slot(product_pos).price = 20
 	
 func check_completion():
@@ -96,6 +112,7 @@ func on_interaction(item):
 		print('product done')
 		var new = get_item_in_slot(product_pos)
 		remove_item_in_slot(product_pos)
+		reset_recipe_match()
 		return new
 		
 	return false

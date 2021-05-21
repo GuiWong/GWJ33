@@ -12,15 +12,26 @@ var just_arrived = false
 
 func _ready():
 	
-	#item_manager.load_item_data()
+	item_manager.load_item_data()
+	Monster_Manager.load_monsters()
+	
+	
 	progression_manager.load_item_count()
 	progression_manager.items_unlocks[0] = true
 	progression_manager.items_unlocks[1] = true
 	progression_manager.items_unlocks[2] = true
 	
 	progression_manager.connect("unlocked",self,'on_item_unlock')
+	
+	progression_manager.exiting = false
+	#progression_manager.
+	
+	
 	room_manager.connect("hero_dead",self,'on_hero_die')
 	room_manager.connect('level_ended',self,'on_hero_win')
+	
+	level_manager.current_level = 1
+	#hero
 	
 	$Shop.connect_objects()
 	
@@ -30,8 +41,8 @@ func _ready():
 	instanciate_things()
 	
 	
-	print(fight_manager.connect('special_used',$World,'play_special_anim'))
-	print($World/Fight_Animator/Hero_Anims.connect("animation_finished",fight_manager,'animation_waiter'))
+	fight_manager.connect('special_used',$World,'play_special_anim')
+	$World/Fight_Animator/Hero_Anims.connect("animation_finished",fight_manager,'animation_waiter')
 	
 	
 	
@@ -49,11 +60,12 @@ func _ready():
 	day_manager.connect('morning_start',self,'on_morning')
 	day_manager.connect('day_start',self,'on_day')
 	day_manager.connect('evening_start',self,'on_evening')
+	day_manager.current_day = 0
 	
 	day_manager.start_dawn()
 	
 	
-	$Shop.chest.add_item(item_manager.create_item(7,30))
+	$Shop.chest.add_item(item_manager.create_item(7,global.starting_gold))
 
 func on_dawn():
 	
@@ -76,6 +88,11 @@ func on_dawn():
 	sold_done = false
 	
 func on_morning():
+	
+	
+	if level_manager.has_finished_game():
+		
+		progression_manager.finish_game()
 	
 	
 	$World.get_next_room().load_room(room_manager.room_list[1])
@@ -130,6 +147,11 @@ func try_sleep():
 		day_manager.start_sleep()
 		
 		
+func toggle_pause_visible():
+	
+	$Pause_Menu.visible = not $Pause_Menu.visible
+		
+		
 func instanciate_things():
 	
 	hero = load('res://Entity/Hero.tscn').instance()
@@ -166,10 +188,15 @@ func _process(delta):
 			hero_step += 1
 			just_arrived = true
 			
+	#	if Input.is_action_just_pressed("ui_cancel"):
+		
+		#PrimitiveMesh
+		#progression_manager.pause()
+			
 			
 		if hero_step == 3 and not sold_done:
 			
-			print ('starting sell')
+			#print ('starting sell')
 			is_processing_hero = false
 			$Timer.start()
 			
@@ -187,11 +214,12 @@ func _process(delta):
 func resume_hero_path():
 	
 	is_processing_hero = true
-	print('restarting hero pathing')
+	#print('restarting hero pathing')
 	
 func load_hero_charges_from_bag():
 	
 	hero.heal_charges = $World/Bag.potion
+	hero.heal_strenght = $World/Bag.potion_strenght
 	
 	hero.charges[0] = $World/Bag.arrow
 	
@@ -284,7 +312,7 @@ func sell_loop():
 		resume_hero_path()
 		sold_done = true
 		
-		print( 'sold everything')
+	#	print( 'sold everything')
 		
 		
 	

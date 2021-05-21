@@ -11,7 +11,7 @@ func is_ready():
 	
 func _ready():
 	timer = Timer.new()
-	timer.wait_time = 1
+	timer.wait_time = 0.1
 	
 	add_child(timer)
 	timer.connect('timeout',self,'is_ready')

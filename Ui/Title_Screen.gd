@@ -1,8 +1,6 @@
 extends Control
 
-# Declare member variables here. Examples:
-# var a = 2
-var step = 0
+
 var can_change = false
 var timer
 
@@ -14,7 +12,7 @@ func is_ready():
 	
 func _ready():
 	timer = Timer.new()
-	timer.wait_time = 1
+	timer.wait_time = 0.2
 	
 	add_child(timer)
 	timer.connect('timeout',self,'is_ready')
@@ -23,15 +21,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	pass
-	#if Input.is_action_just_pressed('a'):
-	#	get_tree().change_scene('res://Ui/How_To_play.tscn')
-		
-func _input(event):
-	
-	#print(event.ty)
-	#print (event.as_text())
-	if event.is_action_type() and can_change: #
+	if Input.is_action_just_pressed('a') and can_change:
 		
 		if name == 'Title_Screen' :#and can_change:
 			
@@ -44,3 +34,17 @@ func _input(event):
 		else:
 			
 			get_tree().change_scene('res://Game_Scenes/Game.tscn')
+			
+	if Input.is_action_just_pressed("ui_cancel"):
+		
+		progression_manager.exit_game()
+			
+		
+		
+#func _input(event):
+	
+	#print(event.ty)
+	#print (event.as_text())
+#	if event.is_action_type() and can_change: #
+		
+		

@@ -76,6 +76,7 @@ func prepare_fight():
 func end_fight():
 	
 	
+	fight_manager.end_fight()
 	if world.get_hero().pv <= 0:
 		c_step = 6
 		emit_signal('hero_dead')
@@ -119,6 +120,8 @@ func load_end():
 	
 func go_to_next_room():
 	
+	#if level_manager.debug:
+		#level_manager.current_level += 1
 	
 	if path_ended:
 		#USELESS I THINK

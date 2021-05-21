@@ -81,8 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GodotWildJam33"
-run/main_scene="res://Game_Scenes/Title_Screen.tscn"
-boot_splash/image="res://Ressources/wallpaper.png"
+run/main_scene="res://Ui/Splash/Jam.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -136,6 +135,5 @@ b={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

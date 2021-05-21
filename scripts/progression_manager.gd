@@ -2,10 +2,13 @@ extends Node
 
 var items_unlocks = []
 signal unlocked(id)
+var exiting = false
+
+var paused = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	pause_mode = Node.PAUSE_MODE_PROCESS
 
 func load_item_count():
 	var c = item_manager.get_item_count()
@@ -29,4 +32,42 @@ func discover(id):
 	else:
 		items_unlocks[id] = true
 		emit_signal("unlocked",id)
+		
+		
+func finish_game():
 	
+	get_tree().change_scene('res://Game_Scenes/Game_Finished.tscn')
+	
+func loose_game():
+	
+	get_tree().change_scene('res://Game_Scenes/Game_Over.tscn')
+	
+func exit_game():
+	
+	
+	exiting = true
+	get_tree().change_scene('res://Game_Scenes/Credits.tscn')
+	
+	exiting = true
+	
+func pause(value):
+	
+	var scene = get_tree().get_current_scene()
+	if scene.name == 'Game':
+		get_tree().paused = value
+		scene.toggle_pause_visible()
+	
+#func play():
+	
+#	get_tree().root
+
+	
+#Very Temporyry !!!	
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		finish_game()
+		
+	elif Input.is_action_just_pressed("ui_cancel"):
+		paused = not paused
+		
+		pause(paused)

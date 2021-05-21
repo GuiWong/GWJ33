@@ -1,13 +1,28 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Ui/Title_Screen.gd" type="Script" id=1]
-[ext_resource path="res://Ressources/system/GodotWildJam.png" type="Texture" id=2]
+[ext_resource path="res://Ressources/system/head_bg_less.png" type="Texture" id=2]
 [ext_resource path="res://Ressources/system/Logo.png" type="Texture" id=3]
 [ext_resource path="res://Ressources/system/GWJ-33-WC-3.png" type="Texture" id=4]
 [ext_resource path="res://Ressources/BEBAS.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Ui/Build_Version.tscn" type="PackedScene" id=6]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="Animation" id=1]
+resource_name = "spin"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 0.1, 0.2 ), Vector2( 0, 0.2 ), Vector2( 0.1, 0.2 ), Vector2( 0.2, 0.2 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
 size = 24
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -24,82 +39,95 @@ margin_bottom = 600.0
 color = Color( 0.0862745, 0.133333, 0.25098, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -327.656
-margin_top = -133.932
-margin_right = 738.344
-margin_bottom = 466.068
+margin_left = -64.4999
+margin_top = -67.5382
+margin_right = 1435.5
+margin_bottom = 1932.46
+rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 4.6575
-margin_top = 344.398
-margin_right = 260.658
-margin_bottom = 600.398
+margin_left = 805.451
+margin_top = -38.0796
+margin_right = 1061.45
+margin_bottom = 217.92
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 891.053, 449.987 )
+position = Vector2( 127.638, 456.803 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 4 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/spin = SubResource( 1 )
+
 [node name="Label" type="Label" parent="."]
-margin_left = 534.202
-margin_top = 73.9433
-margin_right = 653.202
-margin_bottom = 100.943
+margin_left = 377.622
+margin_top = 68.6042
+margin_right = 496.622
+margin_bottom = 95.6039
 rect_scale = Vector2( 3, 3 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Need Title"
 
 [node name="Build_Version" parent="." instance=ExtResource( 6 )]
-margin_left = 577.496
-margin_top = 171.45
-margin_right = 1055.5
-margin_bottom = 220.45
+margin_left = 412.547
+margin_top = 146.584
+margin_right = 890.551
+margin_bottom = 195.584
 
 [node name="Label8" type="Label" parent="."]
-margin_left = 281.024
-margin_top = 527.439
-margin_right = 554.024
-margin_bottom = 554.439
+margin_left = 259.739
+margin_top = 471.182
+margin_right = 613.739
+margin_bottom = 498.182
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = SubResource( 1 )
-text = "Press Any Button To Start"
+custom_fonts/font = SubResource( 2 )
+text = "Press  Left Arrow  Button To Start"
+
+[node name="Label9" type="Label" parent="."]
+margin_left = 292.388
+margin_top = 521.516
+margin_right = 572.388
+margin_bottom = 548.516
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 2 )
+text = "Press  Esc  to   exit   the   game"
 
 [node name="Credits" type="Control" parent="."]
-margin_left = 578.52
-margin_top = 373.973
-margin_right = 618.52
-margin_bottom = 413.973
+margin_left = 812.55
+margin_top = 537.161
+margin_right = 852.55
+margin_bottom = 577.161
 
 [node name="Label4" type="Label" parent="Credits"]
 margin_left = -73.2104
-margin_top = 1.10562
+margin_top = -7.05661
 margin_right = 148.79
-margin_bottom = 28.1056
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 19.9434
+custom_fonts/font = SubResource( 2 )
 text = "Code/ARt/Design :"
 
 [node name="Label7" type="Label" parent="Credits"]
-margin_left = -131.489
-margin_top = 48.5919
-margin_right = 90.5109
-margin_bottom = 75.5919
-custom_fonts/font = SubResource( 1 )
+margin_left = 19.1738
+margin_top = 29.4346
+margin_right = 241.174
+margin_bottom = 56.4346
+custom_fonts/font = SubResource( 2 )
 text = "Music:"
 
 [node name="Label5" type="Label" parent="Credits"]
-margin_left = 116.734
-margin_top = 31.3241
-margin_right = 338.734
-margin_bottom = 58.3241
-custom_fonts/font = SubResource( 1 )
+margin_left = 120.603
+margin_top = -5.46798
+margin_right = 342.603
+margin_bottom = 21.532
+custom_fonts/font = SubResource( 2 )
 text = "GuiWOng"
 
 [node name="Label6" type="Label" parent="Credits"]
-margin_left = -55.9427
-margin_top = 85.2858
-margin_right = 166.057
-margin_bottom = 112.286
-custom_fonts/font = SubResource( 1 )
-text = "JahMo"
+margin_left = 99.2495
+margin_top = 31.1212
+margin_right = 321.249
+margin_bottom = 58.1214
+custom_fonts/font = SubResource( 2 )
+text = "Soon..."

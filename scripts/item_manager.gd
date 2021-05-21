@@ -6,7 +6,7 @@ var item_scene = preload("res://Item/Item.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-	load_item_data()
+	#load_item_data()
 	
 func store_data(raw):
 	

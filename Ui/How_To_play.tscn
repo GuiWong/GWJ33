@@ -171,7 +171,7 @@ margin_right = 567.522
 margin_bottom = 354.979
 
 [node name="Label2" type="Label" parent="VBoxContainer5"]
-margin_right = 168.0
+margin_right = 167.0
 margin_bottom = 27.0
 custom_fonts/font = SubResource( 1 )
 text = "Crafters"
@@ -179,7 +179,7 @@ align = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="VBoxContainer5"]
 margin_top = 31.0
-margin_right = 168.0
+margin_right = 167.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 128, 64 )
 border_color = Color( 0.0862745, 0.133333, 0.25098, 1 )
@@ -192,7 +192,7 @@ region_rect = Rect2( 0, 0, 96, 64 )
 
 [node name="Label" type="Label" parent="VBoxContainer5"]
 margin_top = 99.0
-margin_right = 168.0
+margin_right = 167.0
 margin_bottom = 134.0
 custom_fonts/font = ExtResource( 4 )
 text = "Transform Items 
