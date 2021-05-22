@@ -16,7 +16,7 @@ var coin_volume_var = 10
 
 func get_volume():
 	
-	return base_coin_volume - coin_volume_var * ( (coin_queue_max - (coin_queue_count + 1) ) / coin_queue_max  )
+	return base_coin_volume - coin_volume_var * ( (coin_queue_max - (coin_queue_count + 1) ) / max(0.1,coin_queue_max)  )
 	
 
 # Called when the node enters the scene tree for the first time.

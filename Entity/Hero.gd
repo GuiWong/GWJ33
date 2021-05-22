@@ -49,9 +49,12 @@ func equip_item(id):
 		
 		shield_level = 2
 		
+		$Sprite3.texture= load('res://Ressources/Hero_shield2.png')
+		
 	elif id == 13:
 		
 		sword_level = 2
+		$Sprite2.texture = load('res://Ressources/Hero_sword2.png')
 		
 		
 func use_heal():

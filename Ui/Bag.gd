@@ -12,6 +12,7 @@ var torch_max = 5
 
 var arrow = 0
 var arrow_max = 5
+var arrow_strenght = 1
 
 var bomb = 0
 var bomb_max = 5
@@ -71,11 +72,21 @@ func store_consumable(id,q):
 			
 			arrow = max(arrow + q, arrow_max)
 			$Inventory/Arrow/Label.text = str(arrow)
+			arrow_strenght = 1
+			$Inventory/Arrow/Sprite.region_rect.position = item_manager.get_item_sprite(id)
 			
 		elif id == 9:
 			
 			bomb = max(bomb + q, bomb_max)
 			$Inventory/Bomb/Label.text = str(bomb)
+			
+		elif id == 17:
+			
+			arrow = max(arrow + q, arrow_max)
+			arrow_strenght = 3
+			$Inventory/Arrow/Label.text = str(arrow)
+			$Inventory/Arrow/Sprite.region_rect.position = item_manager.get_item_sprite(id)
+			
 			
 			
 func update_consumables(i,q):
@@ -130,7 +141,7 @@ func has_space_for(id):
 		
 		return true
 		
-	elif id == 5 and arrow < arrow_max:
+	elif (id == 5 or id == 17 ) and arrow < arrow_max:
 		
 		return true
 		

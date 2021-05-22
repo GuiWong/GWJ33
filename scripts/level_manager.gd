@@ -13,7 +13,7 @@ class Room:
 		
 var rng 
 var current_level = 1
-var last_level = 5
+var last_level = 6
 
 #signal next_level
 
@@ -65,7 +65,7 @@ func gen_level_n():
 	
 	if debug:
 		
-		return gen_level_4()
+		return gen_level_5()
 	
 	if current_level == 1:
 		
@@ -82,6 +82,10 @@ func gen_level_n():
 	elif current_level == 4:
 		
 		return gen_level_4()
+		
+	elif current_level == 5:
+		
+		return gen_level_5()
 	
 		
 	else:
@@ -282,6 +286,33 @@ func gen_level_4():
 	var d_list = gen_content_list_from_pool(1, [ [0,5] , [0,7] ])
 	d_list = d_list + [  [0,4] , [0,5] , [0,5] ]
 	pack = gen_from_list( 1 , 1 , d_list)
+	
+	for r in pack:
+		
+		level.append(r)
+	
+	level.append(Room.new(2,2,[3,0],0))
+	
+	return level
+	
+	
+func gen_level_5():
+	
+	var level = []
+	
+	level.append(gen_shop_room())
+	
+	
+	var pack = gen_from_list( 1 , 1 , [ [0,5] , [0,5] , [0,5] , [0,7] , [0,8] , [0,6]]) 
+		
+	for r in pack:
+		
+		level.append(r)
+	
+
+	
+	var d_list = [ [0,9] , [0,9] , [0,9] , [0,8] , [0,5] , [0,5] ]
+	pack = gen_from_list( 2 , 2 , d_list)
 	
 	for r in pack:
 		

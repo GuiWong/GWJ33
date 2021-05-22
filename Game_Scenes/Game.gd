@@ -56,7 +56,12 @@ func _ready():
 		$World.store_loot(item_manager.create_item(13,1))
 		$World.store_loot(item_manager.create_item(14,1))
 		$World.store_loot(item_manager.create_item(3,1))
-		hero.base_pv = 12
+		$World.store_loot(item_manager.create_item(5,5))
+		$World.store_loot(item_manager.create_item(9,5))
+		
+		$World.store_loot(item_manager.create_item(17,5))
+		$World.store_loot(item_manager.create_item(17,5))
+		hero.base_pv = 14
 		global.starting_gold = 300
 		#hero.sword_level = 2
 		#hero.shield_level = 1
@@ -240,6 +245,7 @@ func load_hero_charges_from_bag():
 	hero.heal_strenght = $World/Bag.potion_strenght
 	
 	hero.charges[0] = $World/Bag.arrow
+	hero.strenghts[0] = $World/Bag.arrow_strenght
 	
 	hero.charges[1] = $World/Bag.bomb
 	

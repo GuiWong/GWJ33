@@ -7,7 +7,8 @@ export(int) var current
 const splash_screens_count = 3
 
 func _ready():
-	pass # Replace with function body.
+	#Sound_Manager.load_node()
+	pass
 
 func skip():
 	

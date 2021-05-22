@@ -9,7 +9,7 @@ attack = 4
 base_attack = 4
 attack_time = 7
 base_attack_time = 7
-armor_class = [ 1, -1, 1 ]
+armor_class = [ 1, -2, 1 ]
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

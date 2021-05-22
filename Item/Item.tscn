@@ -5,7 +5,7 @@
 [ext_resource path="res://Item/Interact.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 5.89053
+radius = 9.97869
 
 [node name="Item" type="Node2D"]
 script = ExtResource( 1 )

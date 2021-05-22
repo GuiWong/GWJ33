@@ -10,6 +10,7 @@ func is_ready():
 	
 	can_change = true
 	
+	
 func _ready():
 	timer = Timer.new()
 	timer.wait_time = 0.2
@@ -17,6 +18,8 @@ func _ready():
 	add_child(timer)
 	timer.connect('timeout',self,'is_ready')
 	timer.start()
+	if name == 'Title_Screen':
+		Sound_Manager.load_node()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

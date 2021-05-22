@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entity/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ressources/Monsters3.png" type="Texture" id=2]
+[ext_resource path="res://Ressources/Hero_shield2.png" type="Texture" id=3]
+
+[node name="Skeleton_Armored" instance=ExtResource( 1 )]
+base_pv = 4
+base_attack = 4
+attack_time = 7
+base_attack_time = 7
+armor_class = [ 1, 1, 0 ]
+defence = 1
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Sprite2" type="Sprite" parent="Sprite" index="0"]
+position = Vector2( -11.113, -12.9054 )
+texture = ExtResource( 3 )
+
+[node name="PvBar" parent="." index="5"]
+position = Vector2( 0.157776, -44.7801 )
