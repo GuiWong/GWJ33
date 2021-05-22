@@ -17,6 +17,11 @@ var bomb = 0
 var bomb_max = 5
 
 
+func get_class():
+	
+	return('Slots')
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
