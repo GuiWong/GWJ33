@@ -23,6 +23,20 @@ var product_pos = 0
 var recipe_match = []
 
 
+
+func can_empty():
+	
+	if current_step >= 1:
+		
+		return true
+	
+func empty_item():
+	
+	drop_item_from_solt(current_step-1)
+	current_step -= 1
+	if current_step <= 0:
+		reset_recipe_match()
+	
 func get_class(): 
 	return "Crafter"
 	
@@ -77,9 +91,9 @@ func solve_craft(c_n):
 			
 			remove_item_in_slot(i)
 			
-		for j in recipe_match:
+		#for j in recipe_match:
 			
-			j = true
+		#	j = true
 			
 		add_item_in_slot(len(recipe_list[c_n].reagents),item_manager.create_item(recipe_list[c_n].result,recipe_list[c_n].qtty))
 		current_step = 0
@@ -112,7 +126,8 @@ func on_interaction(item):
 	#	print('product done')
 		var new = get_item_in_slot(product_pos)
 		remove_item_in_slot(product_pos)
-		reset_recipe_match()
+		#reset_recipe_match()
+		product_pos = 0
 		return new
 		
 	return false

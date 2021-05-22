@@ -65,7 +65,7 @@ func gen_level_n():
 	
 	if debug:
 		
-		return gen_level_5()
+		return gen_level_test()
 	
 	if current_level == 1:
 		
@@ -232,10 +232,10 @@ func gen_level_test():
 	
 #	level.append(Room.new(3,3,[1,1],0))
 	
-	level.append(Room.new(2,2,[0,1],0))
-	level.append(Room.new(2,2,[0,1],0))
+	level.append(Room.new(2,2,[0,0],0))
+	level.append(Room.new(2,2,[0,5],0))
 	
-	level.append(Room.new(2,2,[0,1],0))
+	level.append(Room.new(2,2,[0,9],0))
 	level.append(Room.new(2,2,[0,1],0))
 	
 	level.append(Room.new(2,2,[3,0],0))

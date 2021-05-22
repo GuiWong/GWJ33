@@ -5,6 +5,11 @@ class_name Interactable
 # var b = "text"
 signal interacted
 
+
+func can_empty():
+	
+	return false
+
 func get_class():
 	
 	return 'Interactable'

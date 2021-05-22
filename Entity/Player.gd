@@ -20,7 +20,7 @@ func get_item_in_hand():
 	else:
 		return null
 		
-func get_item_selection(item):
+func get_item_selection(item,drop_mode = false):
 	
 	
 	var liste = $Interact_area.get_overlapping_areas()
@@ -49,15 +49,21 @@ func get_item_selection(item):
 				
 				itms.append(e)
 				
-			elif e.get_class() in ['Interactable','Crafter','Storage_Object'] and e.can_interact(item):
+			elif e.get_class() in ['Interactable','Crafter','Storage_Object'] :
 				
-				obj.append(e)
+				if drop_mode == false and e.can_interact(item) :
+				
+					obj.append(e)
+					
+				elif drop_mode and e.can_empty():
+					
+					obj.append(e)
 			
 	#print(str(len(itms)) +' Items - ' +str(len(obj)) +' objects ')
 		
 	var selected 
 		
-	if is_holding:
+	if is_holding or drop_mode:
 		
 		if len(obj) >= 1:
 		
@@ -215,6 +221,12 @@ func _process(delta):
 			emit_signal('item_drop')
 			
 			get_parent().add_child(temp)
+			
+		else:
+			
+			var selected = get_item_selection(null,true)
+			if selected:
+				selected.empty_item()
 		
 	if dir.length() != 0:
 		move(delta)
