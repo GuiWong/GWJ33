@@ -90,7 +90,7 @@ text = "0"
 valign = 1
 
 [node name="Content" type="Node2D" parent="."]
-position = Vector2( 288, 0 )
+position = Vector2( 304, 0 )
 
 [node name="Panel" type="Panel" parent="."]
 show_behind_parent = true
@@ -100,5 +100,5 @@ margin_bottom = 20.0
 [node name="Panel2" type="Panel" parent="."]
 show_behind_parent = true
 margin_left = 256.0
-margin_right = 512.0
+margin_right = 528.0
 margin_bottom = 20.0

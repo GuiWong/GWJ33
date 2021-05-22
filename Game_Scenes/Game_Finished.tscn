@@ -20,7 +20,7 @@ margin_top = 81.4917
 margin_right = 459.05
 margin_bottom = 97.4917
 custom_fonts/font = ExtResource( 2 )
-text = "The Evil Bad Mean Big Buss Has Been Defeated"
+text = "The Evil Bad Mean Big Boss Has Been Defeated"
 
 [node name="Label11" type="Label" parent="."]
 margin_left = 47.4107
@@ -118,5 +118,5 @@ margin_right = 844.534
 margin_bottom = 299.488
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 2 )
-text = "Press Any Button"
+text = "Press Left Arrow"
 align = 1

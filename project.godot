@@ -102,6 +102,14 @@ day_manager="*res://scripts/day_manager.gd"
 global="*res://scripts/global.gd"
 Sound_Manager="*res://scripts/Sound_Manager.gd"
 
+[debug]
+
+gdscript/warnings/unassigned_variable=false
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/stretch/aspect="keep"

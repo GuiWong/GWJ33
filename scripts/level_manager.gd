@@ -44,7 +44,7 @@ func get_level_color(i = null):
 		
 	elif i == 5:
 		
-		Color(0.937755, 0.964844, 0.097992)
+		return Color(0.937755, 0.964844, 0.097992)
 		
 	else:
 		

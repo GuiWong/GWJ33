@@ -264,12 +264,12 @@ custom_fonts/font = SubResource( 1 )
 text = "Arrow  Right"
 
 [node name="Label7" type="Label" parent="."]
-margin_left = 688.764
-margin_top = 118.342
-margin_right = 968.764
-margin_bottom = 145.342
+margin_left = 669.284
+margin_top = 22.8893
+margin_right = 992.284
+margin_bottom = 49.8893
 custom_fonts/font = SubResource( 1 )
-text = "Press Any Key To Start"
+text = "Press Arrow Left To Start"
 align = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]

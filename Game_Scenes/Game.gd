@@ -265,8 +265,10 @@ func get_next_bag_item():
 	if $World.get_bag_content().get_child_count() >=1:
 		var itm = $World.get_bag_content().get_child($World.get_bag_content().get_child_count()-1)
 		$World.get_bag_content().remove_child(itm)
+		
+		#$World/Bag.total -= 1
 		return itm
-		$World/Bag.total -= 1
+		
 	else:
 		return false
 		
