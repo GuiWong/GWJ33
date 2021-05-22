@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Game_Scenes/Game Score.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/custom_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Ressources/items.png" type="Texture" id=3]
+
+[node name="Game Score" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 512.0
+margin_bottom = 300.0
+color = Color( 0.0862745, 0.133333, 0.25098, 1 )
+
+[node name="Win" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Win"]
+margin_left = 85.9178
+margin_top = 49.7419
+margin_right = 424.918
+margin_bottom = 65.7419
+custom_fonts/font = ExtResource( 2 )
+text = "The World Was Saved By the hero in:"
+align = 1
+
+[node name="Loose" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Loose"]
+margin_left = 94.9618
+margin_top = 51.2492
+margin_right = 433.962
+margin_bottom = 67.2492
+custom_fonts/font = ExtResource( 2 )
+text = "you went bankrupt after:"
+align = 1
+
+[node name="Data" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Days" type="Label" parent="Data"]
+margin_left = 97.1671
+margin_top = 79.6656
+margin_right = 436.167
+margin_bottom = 95.6656
+custom_fonts/font = ExtResource( 2 )
+text = "12"
+align = 1
+
+[node name="Label2" type="Label" parent="Data"]
+margin_left = 97.9765
+margin_top = 98.3691
+margin_right = 436.976
+margin_bottom = 114.369
+custom_fonts/font = ExtResource( 2 )
+text = "Days"
+align = 1
+
+[node name="Label3" type="Label" parent="Data"]
+margin_left = -55.2711
+margin_top = 124.633
+margin_right = 283.729
+margin_bottom = 140.633
+custom_fonts/font = ExtResource( 2 )
+text = "You Earned a Total Of:"
+align = 1
+
+[node name="Money" type="Label" parent="Data"]
+margin_left = 14.3008
+margin_top = 158.501
+margin_right = 214.301
+margin_bottom = 174.501
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "1234"
+align = 1
+percent_visible = 2.0
+
+[node name="Sprite" type="Sprite" parent="Data"]
+position = Vector2( 115.017, 191.939 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 112, 0, 16, 16 )

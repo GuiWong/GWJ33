@@ -24,6 +24,7 @@ func _ready():
 	progression_manager.connect("unlocked",self,'on_item_unlock')
 	
 	progression_manager.exiting = false
+	progression_manager.total_coin_earned = 0
 	#progression_manager.
 	
 	
@@ -51,6 +52,15 @@ func _ready():
 	$World.store_loot(item_manager.create_item(1,1))
 	$Timer.connect("timeout",self,'sell_loop')
 	
+	if level_manager.debug:
+		$World.store_loot(item_manager.create_item(13,1))
+		$World.store_loot(item_manager.create_item(14,1))
+		$World.store_loot(item_manager.create_item(3,1))
+		hero.base_pv = 12
+		global.starting_gold = 300
+		#hero.sword_level = 2
+		#hero.shield_level = 1
+	
 	
 	#May be bad, already have signal hero win
 	#level_manager.connect('next_level',self,'on_next_level')
@@ -67,6 +77,14 @@ func _ready():
 	
 	$Shop.chest.add_item(item_manager.create_item(7,global.starting_gold))
 
+
+	Sound_Manager.connect_to_sounder($Sound_Manager)
+	
+	$Shop/YSort/Player.connect('item_grab',Sound_Manager,"grab_item")
+	$Shop/YSort/Player.connect('item_drop',Sound_Manager,"drop_item")
+	#$Shop/YSort/Player.connect('object_used',Sound_Manager,"grab_item")
+	
+	
 func on_dawn():
 	
 	$Dawn_Scene.visible = true
@@ -289,12 +307,20 @@ func buy_item(i):
 		shelf.remove_item_in_slot(0)
 		shelf.delete_price()
 		
+		Sound_Manager.play_coins(min(10,item_manager.get_item_price(item_id) / 10))
+		progression_manager.total_coin_earned += price
+		
 	elif can_buy(item_id,price) == 2:
 		
 		hero.equip_item(item_id)
 		$World/Bag.remove_gold(price)
 		$Shop.chest.add_money(price)
 		shelf.remove_item_in_slot(0)
+		
+		shelf.delete_price()
+		
+		Sound_Manager.play_coins(min(10,item_manager.get_item_price(item_id) / 10))
+		progression_manager.total_coin_earned += price
 		
 		hero.apply_equipement()
 		
@@ -307,6 +333,7 @@ func sell_loop():
 		$Shop.buy_item(i)
 		$World/Bag.add_gold(i.price)
 		$World/Bag.total -= 1
+		Sound_Manager.play_coins(1)
 	else:
 		$Timer.stop()
 		resume_hero_path()

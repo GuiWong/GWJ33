@@ -6,6 +6,8 @@ var exiting = false
 
 var paused = false
 
+var total_coin_earned = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS

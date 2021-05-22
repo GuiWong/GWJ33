@@ -12,4 +12,4 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("a"):
 	
-		get_tree().change_scene('res://Game_Scenes/Credits.tscn')
+		get_tree().change_scene('res://Game_Scenes/Game Score.tscn')

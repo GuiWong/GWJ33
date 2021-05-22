@@ -65,7 +65,7 @@ func gen_level_n():
 	
 	if debug:
 		
-		return gen_level_3()
+		return gen_level_4()
 	
 	if current_level == 1:
 		
@@ -270,14 +270,24 @@ func gen_level_4():
 	level.append(gen_shop_room())
 	
 	
-	var pack = gen_from_list( 2 , 2 , [ [0,5] , [0,5] , [0,5] , [0,5] , [0,2] , [0,2] , [0,4] , [0,4]])
+	var pack = gen_from_list( 1 , 1 , [ [0,6] , [0,5] , [0,5] , [0,2] ]) #, [0,2] , [0,2] , [0,4] , [0,4]])
 		
 	for r in pack:
 		
 		level.append(r)
 	
+	level.append(Room.new(2,2,[0,7],0))
+	level.append(Room.new(2,2,[0,4],0))
 	
-	level.append(Room.new(1,1,[3,0],0))
+	var d_list = gen_content_list_from_pool(1, [ [0,5] , [0,7] ])
+	d_list = d_list + [  [0,4] , [0,5] , [0,5] ]
+	pack = gen_from_list( 1 , 1 , d_list)
+	
+	for r in pack:
+		
+		level.append(r)
+	
+	level.append(Room.new(2,2,[3,0],0))
 	
 	return level
 		

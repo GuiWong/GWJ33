@@ -45,6 +45,10 @@ func equip_item(id):
 		
 		$Sprite3.visible = true
 		
+	elif id == 14:
+		
+		shield_level = 2
+		
 	elif id == 13:
 		
 		sword_level = 2

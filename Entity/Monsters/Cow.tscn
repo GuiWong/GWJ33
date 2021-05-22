@@ -3,19 +3,19 @@
 [ext_resource path="res://Entity/Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ressources/Monsters2.png" type="Texture" id=2]
 
-[node name="Horned_Bat" instance=ExtResource( 1 )]
-base_pv = 2
-attack = 2
-base_attack = 3
-attack_time = 4
-base_attack_time = 4
-armor_class = [ 0, 1, 1 ]
+[node name="Cow" instance=ExtResource( 1 )]
+base_pv = 6
+attack = 4
+base_attack = 4
+attack_time = 7
+base_attack_time = 7
+armor_class = [ 1, -1, 1 ]
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
-offset = Vector2( 0, -12 )
+offset = Vector2( 0, -8 )
 region_enabled = true
-region_rect = Rect2( 64, 0, 64, 64 )
+region_rect = Rect2( 64, 64, 64, 64 )
 
 [node name="PvBar" parent="." index="5"]
-position = Vector2( 0, -67.325 )
+position = Vector2( 0, -45.167 )

@@ -3,6 +3,9 @@ extends Entity
 
 var is_holding = false
 
+signal item_grab
+signal item_drop
+signal object_used(object_name)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -99,32 +102,7 @@ func get_closest_object(liste):
 func _process(delta):
 	
 	dir = Vector2.ZERO
-	if Input.is_action_pressed('up'):
-		dir.y -= 1
-		$Interact_area.rotation_degrees = 0
-		$Sprite.region_rect.position.y = 64
-		$Sprite.flip_h = false
-
-		$Arms.region_rect.position.y = 64
-		$Arms.flip_h = false
 	
-		$Arms_up.region_rect.position.y = 64
-		$Arms_up.flip_h = false
-		#rotation_degrees = 0
-		#$Hand.rotation_degrees = 0
-	elif Input.is_action_pressed('down'):
-		dir.y += 1
-		$Interact_area.rotation_degrees = 180
-		$Sprite.region_rect.position.y = 0
-		$Sprite.flip_h = false
-		
-		$Arms.region_rect.position.y = 0
-		$Arms.flip_h = false
-		
-		$Arms_up.region_rect.position.y = 0
-		$Arms_up.flip_h = false
-		#rotation_degrees = 180
-		#$Hand.rotation_degrees = -180
 	if Input.is_action_pressed('left'):
 		dir.x -= 1
 		$Interact_area.rotation_degrees = 270
@@ -152,6 +130,34 @@ func _process(delta):
 		#rotation_degrees = 90
 		#$Hand.rotation_degrees = -90
 		
+	if Input.is_action_pressed('up'):
+		dir.y -= 1
+		$Interact_area.rotation_degrees = 0
+		$Sprite.region_rect.position.y = 64
+		$Sprite.flip_h = false
+
+		$Arms.region_rect.position.y = 64
+		$Arms.flip_h = false
+	
+		$Arms_up.region_rect.position.y = 64
+		$Arms_up.flip_h = false
+		#rotation_degrees = 0
+		#$Hand.rotation_degrees = 0
+	elif Input.is_action_pressed('down'):
+		dir.y += 1
+		$Interact_area.rotation_degrees = 180
+		$Sprite.region_rect.position.y = 0
+		$Sprite.flip_h = false
+		
+		$Arms.region_rect.position.y = 0
+		$Arms.flip_h = false
+		
+		$Arms_up.region_rect.position.y = 0
+		$Arms_up.flip_h = false
+		#rotation_degrees = 180
+		#$Hand.rotation_degrees = -180
+	
+		
 	if Input.is_action_just_pressed('a'):
 		#var l = $Interact_area.get_overlapping_areas()
 		#if len(l) > 0:
@@ -167,6 +173,8 @@ func _process(delta):
 			$Hand.add_child(selected)
 			is_holding = true
 			
+			emit_signal('item_grab')
+			
 			$Arms.visible = false
 			$Arms_up.visible = true
 			
@@ -177,6 +185,9 @@ func _process(delta):
 				$Hand.remove_child(itm)
 				
 			var new = selected.on_interaction(itm)
+			
+			emit_signal('object_used',selected.name)
+			
 			if new:
 				$Hand.add_child(new)
 				
@@ -200,6 +211,8 @@ func _process(delta):
 			var temp = $Hand.get_child(0)
 			$Hand.remove_child(temp)
 			temp.position = $Interact_area.global_position
+			
+			emit_signal('item_drop')
 			
 			get_parent().add_child(temp)
 		
