@@ -127,6 +127,18 @@ tracks/3/keys = {
 "method": "on_special_anim_ended"
 } ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 32, 32 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Potion"
@@ -250,11 +262,10 @@ z_index = 6
 
 [node name="Sprite" type="Sprite" parent="Fight_Animator"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 181.006, 109.901 )
-scale = Vector2( 4, 4 )
+position = Vector2( 105.082, 96 )
 texture = ExtResource( 6 )
 region_enabled = true
-region_rect = Rect2( 32, 0, 32, 32 )
+region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Hero_Anims" type="AnimationPlayer" parent="Fight_Animator"]
 anims/Bomb = SubResource( 1 )

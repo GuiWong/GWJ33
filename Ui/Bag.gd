@@ -16,6 +16,7 @@ var arrow_strenght = 1
 
 var bomb = 0
 var bomb_max = 5
+var bomb_strenght = 4
 
 
 func get_class():
@@ -75,10 +76,7 @@ func store_consumable(id,q):
 			arrow_strenght = 1
 			$Inventory/Arrow/Sprite.region_rect.position = item_manager.get_item_sprite(id)
 			
-		elif id == 9:
-			
-			bomb = max(bomb + q, bomb_max)
-			$Inventory/Bomb/Label.text = str(bomb)
+		
 			
 		elif id == 17:
 			
@@ -87,7 +85,19 @@ func store_consumable(id,q):
 			$Inventory/Arrow/Label.text = str(arrow)
 			$Inventory/Arrow/Sprite.region_rect.position = item_manager.get_item_sprite(id)
 			
+		elif id == 9:
 			
+			bomb = max(bomb + q, bomb_max)
+			bomb_strenght = 4
+			$Inventory/Bomb/Label.text = str(bomb)
+			$Inventory/Bomb/Sprite.region_rect.position = item_manager.get_item_sprite(id)
+			
+		elif id == 23:	
+			
+			bomb_strenght = 8
+			bomb = max(bomb + q, bomb_max)
+			$Inventory/Bomb/Label.text = str(bomb)
+			$Inventory/Bomb/Sprite.region_rect.position = item_manager.get_item_sprite(id)
 			
 func update_consumables(i,q):
 	
@@ -145,9 +155,10 @@ func has_space_for(id):
 		
 		return true
 		
-	elif id == 9 and bomb < bomb_max:
+	elif (id == 9 or id == 23) and bomb < bomb_max:
 		
 		return true
+		
 	else:
 		
 		return false

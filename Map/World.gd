@@ -9,7 +9,8 @@ var current_room_node = 0
 #TODO SOLVE THAT SHITTY THING!!!!!!!!!!
 var monster_nodes = [null,null,null,null,
 					null,null,null,null,
-					null,null,null,null]
+					null,null,null,null,
+					null,null]
 
 var processing_rooms = false
 
@@ -76,6 +77,24 @@ func on_special_anim_ended():
 	#TODO BETTER THAN THAT
 	#print('EHY!!!?')
 	fight_manager.animation_waiter()
+	
+func get_id_from_strenght(type,strenght):
+	
+	if type == 0:
+		
+		if strenght == 4:
+			
+			return 6
+			
+		elif strenght == 8:
+			
+			return 15
+	
+func set_potion_animation_sprite():
+	
+	$Fight_Animator/Sprite.texture=load('res://Ressources/items.png')
+	$Fight_Animator/Sprite.region_rect.position = item_manager.get_item_sprite(get_id_from_strenght(0,get_hero().heal_strenght))
+	$Fight_Animator/Sprite.region_rect.size = Vector2(16,16)
 
 func play_special_anim(a,i):
 	

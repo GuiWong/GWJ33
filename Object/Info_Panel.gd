@@ -19,6 +19,7 @@ func remove_foot():
 	
 func connect_object(obj : Object_Class):
 	linked = obj
+	obj.link(self)
 	
 func begin_pos_thing(size_v):
 
@@ -114,21 +115,27 @@ func update_sprites(new_id):
 		
 		var recipes = linked.recipe_list
 		
+		var passs = false
+		
+		if new_id == null:
+			
+			passs = true
+		
 		var c_sprite = 0
 		
 		for r in recipes:
 	
 			for re in r.reagents:
 				
-				if re == new_id:
+				if passs or re == new_id:
 					
-					change_sprite(c_sprite,item_manager.get_item_sprite(re))
+					change_sprite(c_sprite,progression_manager.get_item_sprite(re))
 					
 				c_sprite += 1
 				
-			if r.result == new_id:
+			if passs or r.result == new_id:
 					
-				change_sprite(c_sprite,item_manager.get_item_sprite(r.result))
+				change_sprite(c_sprite,progression_manager.get_item_sprite(r.result))
 					
 			c_sprite += 1
 					

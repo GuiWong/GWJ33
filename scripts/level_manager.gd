@@ -13,11 +13,11 @@ class Room:
 		
 var rng 
 var current_level = 1
-var last_level = 7
+var last_level = 8
 
 #signal next_level
 
-var debug = true
+var debug = false
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,6 +46,14 @@ func get_level_color(i = null):
 		
 		return Color(0.937755, 0.964844, 0.097992)
 		
+	elif i == 6:
+		
+		return Color(0.132812, 0.132812, 0.132812)
+		
+	elif i == 7:
+		
+		return Color(0.882353, 0, 0)
+		
 	else:
 		
 		return Color(1,1,1)
@@ -65,7 +73,7 @@ func gen_level_n():
 	
 	if debug:
 		
-		return gen_level_6()
+		return gen_level_7()
 	
 	if current_level == 1:
 		
@@ -351,5 +359,32 @@ func gen_level_6():
 		level.append(Room.new(2,2,[3,0],0))
 		
 		return level
+		
+func gen_level_7():
+	
+	var level = []
+	
+	var pack = gen_from_list( 1 , 1 , [ [0,10] , [0,7] , [0,9] , [0,8] ] ) 
+	
+	for r in pack:
+		
+		level.append(r)
+		
+	level.append(Room.new(2,2,[0,13],0))
+	
+	var d_content = gen_content_list_from_pool( 3 , [ [0,12] , [0,10] ] )
+	
+	d_content = d_content + [ [0,13] , [0,7] , [0,8] ]
+	
+	pack = gen_from_list( 2 , 2 , d_content)
+	
+	
+	for r in pack:
+		
+		level.append(r)
+	
+	level.append(Room.new(2,2,[3,0],0))
+		
+	return level
 		
 		

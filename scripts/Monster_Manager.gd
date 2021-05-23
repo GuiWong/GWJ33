@@ -22,12 +22,17 @@ var monster_loot = [ [ 1 ] ,
 					[ 4 , 10 ],
 					[ 16 ] ,
 					[ 18 ] ,
-					[ 19 ]
+					[ 19 ],
+					[ 11 , 11 ],
+					[ 22 ]
 					
 					
 					]
 					
-var monster_gold = [2,1,5,6,15,5,5,20,10,15 , 10 , 25]
+var monster_gold = [2,1,5,6,
+					15,5,5,20,
+					10,15 , 10 , 25,
+					10 , 50 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#load_monsters()
@@ -51,6 +56,8 @@ func load_monsters():
 	monsters.append(load('res://Entity/Monsters/Snake.tscn'))
 	monsters.append(load('res://Entity/Monsters/Boomer_Hardened.tscn'))
 	monsters.append(load('res://Entity/Monsters/Magic_Thing.tscn'))
+	monsters.append(load('res://Entity/Monsters/Two_headed_Bat.tscn'))
+	monsters.append(load('res://Entity/Monsters/Crystal.tscn'))
 
 func create_monster_node(id):
 	

@@ -40,6 +40,8 @@ func can_equip(id):
 		
 		return true
 		
+	
+		
 	else:
 		
 		return false

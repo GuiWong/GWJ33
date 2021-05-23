@@ -7,10 +7,12 @@ export(int) var slots = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	slots = $Slots.get_child_count()
+	
+	#slots = $Slots.get_child_count()
+	pass
 	
 	
-func drop_item_from_solt(i):
+func drop_item_from_slot(i):
 	
 	var itm = get_item_in_slot(i)
 	

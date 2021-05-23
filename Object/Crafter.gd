@@ -24,6 +24,11 @@ var recipe_match = []
 
 
 
+var once_each = false
+var recipe_queue = []
+
+
+
 func can_empty():
 	
 	if current_step >= 1:
@@ -32,7 +37,7 @@ func can_empty():
 	
 func empty_item():
 	
-	drop_item_from_solt(current_step-1)
+	drop_item_from_slot(current_step-1)
 	current_step -= 1
 	if current_step <= 0:
 		reset_recipe_match()
@@ -41,9 +46,23 @@ func get_class():
 	return "Crafter"
 	
 	
+func load_next_recipe():
+	
+	if len(recipe_queue) >= 1:
+		recipe_list = []
+		add_recipe(recipe_queue[0])
+		
+		if linked_updatable != null:
+			
+			linked_updatable.update_sprites(null)
+	
 func add_recipe(recip):
 	recipe_list.append(recip)
 	recipe_match.append(true)
+	
+func queue_recipe(recip):
+	
+	recipe_queue.append(recip)
 	
 func reset_recipe_match():
 	
@@ -99,6 +118,11 @@ func solve_craft(c_n):
 		current_step = 0
 		product_pos = len(recipe_list[c_n].reagents)
 		reset_recipe_match()
+		
+		
+		if once_each:
+			
+			load_next_recipe()
 		
 		#get_item_in_slot(product_pos).price = 20
 	

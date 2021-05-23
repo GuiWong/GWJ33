@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entity/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ressources/Monsters4.png" type="Texture" id=2]
+
+[node name="Two_headed_Bat" instance=ExtResource( 1 )]
+base_pv = 4
+base_attack = 5
+attack_time = 3
+base_attack_time = 3
+defence = 2
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="PvBar" parent="." index="5"]
+position = Vector2( 0, -36.302 )
