@@ -18,3 +18,7 @@ Id;Texture_Id;Name;Price;Stack_Size
 15;15;PotionT_2;50;1
 16;16;Teeth;15;10
 17;17;Arrow_Metal;15;5
+18;18;Powder_T2;10;99
+19;19;Magical_essence;25;1
+20;20;Magic_Metal;50;1
+21;21;Sword_T3;250;1

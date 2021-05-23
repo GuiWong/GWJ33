@@ -17,6 +17,9 @@ func apply_equipement():
 	attack = sword_level
 	defence = shield_level
 	
+	
+	#change that maybe
+	
 	armor_class[1] = shield_level
 	
 func can_equip(id):
@@ -30,6 +33,10 @@ func can_equip(id):
 		return true
 		
 	elif id == 14 and shield_level < 2:
+		
+		return true
+		
+	elif id == 21 and sword_level < 4:
 		
 		return true
 		
@@ -55,6 +62,10 @@ func equip_item(id):
 		
 		sword_level = 2
 		$Sprite2.texture = load('res://Ressources/Hero_sword2.png')
+		
+	elif id == 21:
+		
+		sword_level = 4
 		
 		
 func use_heal():

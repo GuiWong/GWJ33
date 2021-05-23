@@ -7,7 +7,9 @@ var current_room_node = 0
 
 
 #TODO SOLVE THAT SHITTY THING!!!!!!!!!!
-var monster_nodes = [null,null,null,null,null,null,null,null,null,null]
+var monster_nodes = [null,null,null,null,
+					null,null,null,null,
+					null,null,null,null]
 
 var processing_rooms = false
 

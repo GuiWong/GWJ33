@@ -61,6 +61,7 @@ func _ready():
 		
 		$World.store_loot(item_manager.create_item(17,5))
 		$World.store_loot(item_manager.create_item(17,5))
+		$World.store_loot(item_manager.create_item(19,5))
 		hero.base_pv = 14
 		global.starting_gold = 300
 		#hero.sword_level = 2

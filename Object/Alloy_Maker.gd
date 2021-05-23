@@ -6,8 +6,7 @@ extends Crafter
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	add_recipe(Recipe.new(13,1,[11,10,10]))
-	add_recipe(Recipe.new(21,1,[11,20,20]))
+	add_recipe(Recipe.new(20,1,[10,19]))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

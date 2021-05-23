@@ -2,7 +2,7 @@ extends Node
 
 
 var consumables = [2,5,6,9,15,17]
-var upgrades = [3,13,14]
+var upgrades = [3,13,14,21]
 
 var starting_gold = 30
 

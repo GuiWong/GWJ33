@@ -13,11 +13,11 @@ class Room:
 		
 var rng 
 var current_level = 1
-var last_level = 6
+var last_level = 7
 
 #signal next_level
 
-var debug = false
+var debug = true
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,7 +65,7 @@ func gen_level_n():
 	
 	if debug:
 		
-		return gen_level_test()
+		return gen_level_6()
 	
 	if current_level == 1:
 		
@@ -321,4 +321,35 @@ func gen_level_5():
 	level.append(Room.new(2,2,[3,0],0))
 	
 	return level
+	
+	
+func gen_level_6():
+		
+		
+		var level = []
+	
+		level.append(gen_shop_room())
+	
+	
+		var pack = gen_from_list( 1 , 1 , [ [0,4] , [0,4] , [0,5] , [0,5] , [0,5] , [0,7] , [0,9] ] )
+		
+		for r in pack:
+		
+			level.append(r)
+			
+		level.append(Room.new(2,2,[0,11],0))
+		
+		level.append(Room.new(2,2,[0,10],0))
+		
+		
+		pack = gen_from_list( 2 , 2 , [ [0 , 8] , [0,8] , [0,9] ] )
+		
+		for r in pack:
+		
+			level.append(r)
+		
+		level.append(Room.new(2,2,[3,0],0))
+		
+		return level
+		
 		
