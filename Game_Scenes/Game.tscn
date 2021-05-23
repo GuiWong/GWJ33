@@ -68,7 +68,6 @@ z_index = 20
 position = Vector2( -1000, 0 )
 
 [node name="Ui" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = 40
 
 [node name="ColorRect" type="ColorRect" parent="Ui"]
@@ -90,6 +89,7 @@ margin_bottom = 858.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Build_Info" type="Node2D" parent="Ui"]
+visible = false
 
 [node name="Build_Version" parent="Ui/Build_Info" instance=ExtResource( 7 )]
 

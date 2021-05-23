@@ -50,7 +50,7 @@ func update_pv_bar():
 
 func take_damage(q):
 	
-	pv -= q
+	pv = max( 0 , pv - q )
 	
 func heal(q):
 	

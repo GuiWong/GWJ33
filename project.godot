@@ -86,7 +86,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GodotWildJam33"
+config/name="Shopkeeper's Duty"
 run/main_scene="res://Ui/Splash/Jam.tscn"
 config/icon="res://icon.png"
 

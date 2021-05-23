@@ -5,9 +5,9 @@
 [node name="Level_ended" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 256.0
+margin_right = 274.0
 margin_bottom = 96.0
-color = Color( 0.0862745, 0, 0.396078, 1 )
+color = Color( 0.0862745, 0.133333, 0.25098, 1 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 33.3925

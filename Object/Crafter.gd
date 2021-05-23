@@ -39,6 +39,7 @@ func can_empty():
 func empty_item():
 	
 	drop_item_from_slot(current_step-1)
+	Sound_Manager.drop_item()
 	current_step -= 1
 	if current_step <= 0:
 		reset_recipe_match()
@@ -145,6 +146,9 @@ func on_interaction(item):
 		if check_reagent(item):
 			add_reagent(item)
 			check_completion()
+			
+			Sound_Manager.grab_item()
+			
 			return false
 		else:
 			return item

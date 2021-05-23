@@ -62,19 +62,22 @@ texture = ExtResource( 4 )
 anims/spin = SubResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 377.622
-margin_top = 68.6042
-margin_right = 496.622
-margin_bottom = 95.6039
+margin_left = 305.829
+margin_top = 37.3548
+margin_right = 445.829
+margin_bottom = 88.3548
 rect_scale = Vector2( 3, 3 )
 custom_fonts/font = SubResource( 2 )
-text = "Need Title"
+text = "Shopkeeper's
+Duty"
+align = 1
 
 [node name="Build_Version" parent="." instance=ExtResource( 6 )]
-margin_left = 412.547
-margin_top = 146.584
-margin_right = 890.551
-margin_bottom = 195.584
+visible = false
+margin_left = 402.807
+margin_top = 212.817
+margin_right = 880.811
+margin_bottom = 261.817
 
 [node name="Label8" type="Label" parent="."]
 margin_left = 259.739

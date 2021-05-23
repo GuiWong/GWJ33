@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game_Scenes/Credits.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/custom_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Ressources/system/logo_small_color_dark.svg" type="Texture" id=3]
 [ext_resource path="res://Ressources/system/Logo_details.png" type="Texture" id=4]
 [ext_resource path="res://Ressources/system/wonggame.png" type="Texture" id=5]
+[ext_resource path="res://Ressources/system/GWJ-33-WC-3.png" type="Texture" id=6]
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
@@ -18,12 +19,13 @@ margin_bottom = 300.0
 color = Color( 0.0862745, 0.133333, 0.25098, 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 204.074
-margin_top = 29.3632
-margin_right = 276.074
-margin_bottom = 45.3632
+margin_left = 171.932
+margin_top = 11.8311
+margin_right = 332.932
+margin_bottom = 46.8311
 custom_fonts/font = ExtResource( 2 )
-text = "Credits:"
+text = "Created For the 
+Godot Wild Jam 33"
 
 [node name="R0" type="Control" parent="."]
 visible = false
@@ -145,15 +147,15 @@ margin_top = 67.8261
 margin_right = 246.623
 margin_bottom = 83.8262
 custom_fonts/font = ExtResource( 2 )
-text = "Théeo"
+text = "Jahmo"
 
 [node name="Label8" type="Label" parent="R3"]
-margin_left = 105.226
-margin_top = 82.6311
-margin_right = 177.225
-margin_bottom = 98.6311
+margin_left = 71.6244
+margin_top = 83.9234
+margin_right = 172.624
+margin_bottom = 99.9235
 custom_fonts/font = ExtResource( 2 )
-text = "Dylan"
+text = "Abominable"
 
 [node name="Label9" type="Label" parent="R3"]
 margin_left = 180.176
@@ -247,6 +249,7 @@ texture = ExtResource( 4 )
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="."]
+modulate = Color( 0.0705882, 0.482353, 0, 1 )
 margin_left = 373.317
 margin_top = 17.1643
 margin_right = 445.317
@@ -256,6 +259,7 @@ custom_fonts/font = ExtResource( 2 )
 text = "A"
 
 [node name="Label3" type="Label" parent="."]
+modulate = Color( 0.0705882, 0.482353, 0, 1 )
 margin_left = 382.405
 margin_top = 61.4697
 margin_right = 478.405
@@ -271,3 +275,11 @@ margin_right = 493.0
 margin_bottom = 89.1643
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 21.069
+margin_top = 15.1474
+margin_right = 901.069
+margin_bottom = 1215.15
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 6 )

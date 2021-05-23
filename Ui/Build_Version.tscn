@@ -39,8 +39,8 @@ valign = 1
 [node name="Label3" type="Label" parent="."]
 margin_left = 212.0
 margin_top = 15.0
-margin_right = 236.0
+margin_right = 251.0
 margin_bottom = 33.0
 custom_fonts/font = SubResource( 1 )
-text = "0.5"
+text = "0.5.0"
 valign = 1

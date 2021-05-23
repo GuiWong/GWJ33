@@ -5,7 +5,7 @@
 [node name="Game_Over_World" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 256.0
+margin_right = 278.0
 margin_bottom = 96.0
 color = Color( 0, 0, 0, 0.854902 )
 

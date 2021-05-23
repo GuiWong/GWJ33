@@ -32,23 +32,23 @@ func get_level_color(i = null):
 	
 	if i == 1:# or i == 0:
 		
-		return Color(0.286275, 0.243137, 0.694118)
+		return Color(0.191406, 0.279846, 1)
 		
 	elif i == 2:
 		
-		return Color(0.172549, 0.627451, 0.898039)
+		return Color(0.570312, 1, 0.62738)
 		
 	elif i == 3 or i == 4:
 		
-		return Color(0.85098, 0.694118, 0.078431)
+		return Color(0.08638, 0.433594, 0.132494)
 		
 	elif i == 5:
 		
-		return Color(0.937755, 0.964844, 0.097992)
+		return Color(1, 0.607843, 0)
 		
 	elif i == 6:
 		
-		return Color(0.132812, 0.132812, 0.132812)
+		return Color(0.513726, 0, 0.529412)
 		
 	elif i == 7:
 		
@@ -73,8 +73,8 @@ func gen_level_n():
 	
 	if debug:
 		
-		#return gen_level_7()
-		pass
+		return gen_level_3()
+		#pass
 	
 	if current_level == 1:
 		
@@ -232,7 +232,7 @@ func gen_level_2():
 		
 		level.append(r)
 		
-	level.append(Room.new(3,4,[3,0],0))
+	level.append(Room.new(2,2,[3,0],0))
 	
 	
 	return level
@@ -266,7 +266,7 @@ func gen_level_3():
 	
 	level.append(gen_shop_room())
 							#TODO: Forest Sprite
-	var pack = gen_from_list( 1 , 1 , [ [0,2] , [0,3] , [0,5] , [0,0] ])
+	var pack = gen_from_list( 4 , 4 , [ [0,2] , [0,3] , [0,5] , [0,0] ])
 	
 	for r in pack:
 		
@@ -302,7 +302,7 @@ func gen_level_4():
 	
 	var d_list = gen_content_list_from_pool(1, [ [0,5] , [0,7] ])
 	d_list = d_list + [  [0,4] , [0,5] , [0,5] ]
-	pack = gen_from_list( 1 , 1 , d_list)
+	pack = gen_from_list( 2 , 2 , d_list)
 	
 	for r in pack:
 		
