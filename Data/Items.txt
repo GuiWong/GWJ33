@@ -24,3 +24,4 @@ Id;Texture_Id;Name;Price;Stack_Size
 21;21;Sword_T3;250;1
 22;22;Crystal;25;99
 23;23;Bomb_T2;20;5
+24;24;Shield_T3;333;1

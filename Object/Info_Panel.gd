@@ -81,6 +81,10 @@ func change_sprite(n,rect):
 	
 	$Sprites.get_child(n).region_rect.position = rect
 	
+func re_load():
+	
+	update_sprites(null , true)
+	
 func build():
 	
 	if linked.get_class() == 'Crafter':
@@ -111,7 +115,7 @@ func build():
 		$Sprite.modulate = Color(1,0,0)
 		
 		
-func update_sprites(new_id):
+func update_sprites(new_id , hook_create = false):
 		
 		var recipes = linked.recipe_list
 		
@@ -130,12 +134,19 @@ func update_sprites(new_id):
 				if passs or re == new_id:
 					
 					change_sprite(c_sprite,progression_manager.get_item_sprite(re))
+					if hook_create:
+						
+						if not re in items_hook:
+							items_hook.append(re)
 					
 				c_sprite += 1
 				
 			if passs or r.result == new_id:
 					
 				change_sprite(c_sprite,progression_manager.get_item_sprite(r.result))
-					
+				if hook_create:
+						
+						if not r.result in items_hook:
+							items_hook.append(r.result)
 			c_sprite += 1
 					

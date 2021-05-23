@@ -10,6 +10,16 @@ func _ready():
 	#$Sprite.region_rect.position.x = 64
 	pass
 	
+func empty_item():
+	
+	drop_item_from_slot(0)
+	delete_price()
+	
+func can_empty():
+	
+	return get_item_in_slot(0) != null
+	
+	
 func delete_price():
 	
 	$Label.text = ''

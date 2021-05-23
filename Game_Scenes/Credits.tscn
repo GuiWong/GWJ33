@@ -26,10 +26,11 @@ custom_fonts/font = ExtResource( 2 )
 text = "Credits:"
 
 [node name="R0" type="Control" parent="."]
-margin_left = 323.107
-margin_top = 41.2462
-margin_right = 363.107
-margin_bottom = 81.2462
+visible = false
+margin_left = 87.8342
+margin_top = 33.6916
+margin_right = 127.834
+margin_bottom = 73.6916
 
 [node name="Label6" type="Label" parent="R0"]
 margin_left = -256.31
@@ -49,17 +50,17 @@ texture = ExtResource( 3 )
 stretch_mode = 5
 
 [node name="R1" type="Control" parent="."]
-editor/display_folded = true
-margin_left = 336.223
-margin_top = 117.599
-margin_right = 376.223
-margin_bottom = 157.599
+margin_left = 170.315
+margin_top = 68.8986
+margin_right = 210.315
+margin_bottom = 108.899
 
 [node name="Label2" type="Label" parent="R1"]
 margin_right = 72.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 2 )
 text = "Design"
+align = 1
 
 [node name="Label3" type="Label" parent="R1"]
 margin_left = 1.46814
@@ -68,6 +69,18 @@ margin_right = 73.4681
 margin_bottom = 32.1498
 custom_fonts/font = ExtResource( 2 )
 text = "Code"
+align = 1
+valign = 1
+
+[node name="Label6" type="Label" parent="R1"]
+margin_left = 42.327
+margin_top = 13.9493
+margin_right = 114.327
+margin_bottom = 29.9493
+custom_fonts/font = ExtResource( 2 )
+text = ":"
+align = 1
+valign = 1
 
 [node name="Label4" type="Label" parent="R1"]
 margin_left = -0.356812
@@ -76,21 +89,21 @@ margin_right = 71.6432
 margin_bottom = 49.1953
 custom_fonts/font = ExtResource( 2 )
 text = "Art"
+align = 1
 
 [node name="Label5" type="Label" parent="R1"]
-margin_left = 96.0263
-margin_top = 17.7232
-margin_right = 168.026
-margin_bottom = 33.7232
+margin_left = 98.3232
+margin_top = 16.9657
+margin_right = 170.323
+margin_bottom = 32.9657
 custom_fonts/font = ExtResource( 2 )
 text = "GuiWong"
 
 [node name="R2" type="Control" parent="."]
-editor/display_folded = true
-margin_left = 336.223
-margin_top = 195.395
-margin_right = 376.223
-margin_bottom = 235.395
+margin_left = 190.41
+margin_top = 132.352
+margin_right = 230.41
+margin_bottom = 172.352
 
 [node name="Label6" type="Label" parent="R2"]
 margin_left = -4.84714
@@ -98,15 +111,73 @@ margin_top = 1.28355
 margin_right = 67.1529
 margin_bottom = 17.2836
 custom_fonts/font = ExtResource( 2 )
-text = "Music"
+text = "Music :"
 
 [node name="Label7" type="Label" parent="R2"]
-margin_left = 89.5602
-margin_top = -2.49274
-margin_right = 161.56
-margin_bottom = 13.5073
+margin_left = 76.6581
+margin_top = 0.660381
+margin_right = 148.658
+margin_bottom = 16.6604
 custom_fonts/font = ExtResource( 2 )
 text = "JahMo"
+
+[node name="R3" type="Control" parent="."]
+margin_left = 168.065
+margin_top = 185.315
+margin_right = 208.065
+margin_bottom = 225.315
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Label6" type="Label" parent="R3"]
+margin_left = 0.187317
+margin_top = -23.7001
+margin_right = 175.187
+margin_bottom = 11.2999
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 2 )
+text = "a huge thanks 
+to all playtesters"
+align = 1
+
+[node name="Label7" type="Label" parent="R3"]
+margin_left = 174.624
+margin_top = 67.8261
+margin_right = 246.623
+margin_bottom = 83.8262
+custom_fonts/font = ExtResource( 2 )
+text = "Théeo"
+
+[node name="Label8" type="Label" parent="R3"]
+margin_left = 105.226
+margin_top = 82.6311
+margin_right = 177.225
+margin_bottom = 98.6311
+custom_fonts/font = ExtResource( 2 )
+text = "Dylan"
+
+[node name="Label9" type="Label" parent="R3"]
+margin_left = 180.176
+margin_top = 102.988
+margin_right = 252.175
+margin_bottom = 118.988
+custom_fonts/font = ExtResource( 2 )
+text = "Joe"
+
+[node name="Label10" type="Label" parent="R3"]
+margin_left = 106.151
+margin_top = 51.1706
+margin_right = 178.151
+margin_bottom = 67.1707
+custom_fonts/font = ExtResource( 2 )
+text = "Basile"
+
+[node name="Label11" type="Label" parent="R3"]
+margin_left = 105.226
+margin_top = 116.867
+margin_right = 177.225
+margin_bottom = 132.867
+custom_fonts/font = ExtResource( 2 )
+text = "Alison"
 
 [node name="Links" type="Control" parent="."]
 margin_left = 65.3938
@@ -132,26 +203,26 @@ custom_fonts/font = ExtResource( 2 )
 text = "https://guiwong.itch.io/"
 
 [node name="Programs" type="Control" parent="."]
-margin_left = 336.223
-margin_top = 251.425
-margin_right = 376.223
-margin_bottom = 291.425
+margin_left = 374.209
+margin_top = 217.335
+margin_right = 414.209
+margin_bottom = 257.335
 
 [node name="Label6" type="Label" parent="Programs"]
-margin_left = -21.211
-margin_top = 2.54231
-margin_right = 65.789
-margin_bottom = 37.5423
+margin_left = -36.7951
+margin_top = 32.7366
+margin_right = 50.2049
+margin_bottom = 67.7366
 custom_fonts/font = ExtResource( 2 )
 text = "Programs
 Used:"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Programs"]
-margin_left = 88.1135
-margin_top = 5.03505
-margin_right = 138.113
-margin_bottom = 45.035
+margin_left = 68.6334
+margin_top = 32.3073
+margin_right = 118.633
+margin_bottom = 72.3073
 
 [node name="Label7" type="Label" parent="Programs/VBoxContainer"]
 margin_right = 49.0

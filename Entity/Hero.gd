@@ -40,6 +40,10 @@ func can_equip(id):
 		
 		return true
 		
+	elif id == 24 and shield_level < 4:
+		
+		return true
+		
 	
 		
 	else:
@@ -68,6 +72,13 @@ func equip_item(id):
 	elif id == 21:
 		
 		sword_level = 4
+		$Sprite2.texture = load('res://Ressources/Hero_sword3.png')
+		
+		
+	elif id == 24:
+		
+		shield_level = 4
+		$Sprite3.texture = load('res://Ressources/Hero_shield3.png')
 		
 		
 func use_heal():

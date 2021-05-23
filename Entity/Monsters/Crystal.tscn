@@ -9,7 +9,7 @@ attack = 7
 base_attack = 7
 attack_time = 11
 base_attack_time = 11
-armor_class = [ 2, -1, 0 ]
+armor_class = [ 2, 4, -2 ]
 defence = 1
 
 [node name="Sprite" parent="." index="0"]

@@ -73,7 +73,8 @@ func gen_level_n():
 	
 	if debug:
 		
-		return gen_level_7()
+		#return gen_level_7()
+		pass
 	
 	if current_level == 1:
 		
@@ -94,6 +95,14 @@ func gen_level_n():
 	elif current_level == 5:
 		
 		return gen_level_5()
+		
+	elif current_level == 6:
+		
+		return gen_level_6()
+		
+	elif current_level == 7:
+		
+		return gen_level_7()
 	
 		
 	else:

@@ -27,8 +27,20 @@ func calc_special_attack_weight(f_id,att_c):
 	if fighter[f_id].charges[att_c] >= 1:
 		
 		#print('Fighter ' + str(f_id) + ' has ' +str(fighter[f_id].charges[att_c]) +' charges usable for special attack ' +str(att_c))
+		#var d_x = 0
 		
-		return fighter[f_id].charges[att_c] + 2 * fighter[abs(f_id - 1)].armor_class[0] - 3 * fighter[abs(f_id - 1)].armor_class[att_c + 1]
+		#if 	fighter[f_id].strenghts[att_c] == 3:
+			
+		#	d_x = 6
+			
+		if fighter[f_id].strenghts[att_c]  == 3 or fighter[f_id].strenghts[att_c] == 8:
+			
+			#print ('other algo')
+			return 4 * ( fighter[f_id].strenghts[att_c] - fighter[abs(f_id - 1)].armor_class[att_c + 1] )
+			
+		else:
+											
+			return fighter[f_id].charges[att_c] + 2 * fighter[abs(f_id - 1)].armor_class[0]  -  3 * fighter[abs(f_id - 1)].armor_class[att_c + 1] 
 	else:
 		return 0
 		
@@ -233,7 +245,9 @@ func apply_damage(attacker,damage,instant = false):
 	
 	fighter[abs(attacker-1)].take_damage(damage)
 	
-	if fighter[abs(attacker-1)].pv <= 0:
+	if fighter[abs(attacker-1)].pv <= 0 and fighter[abs(attacker-1)].heal_charges <= 0:
+		
+
 		
 		is_finished = true
 		#emit_signal("fight_end")
@@ -254,6 +268,10 @@ func apply_damage(attacker,damage,instant = false):
 				
 			fighter[abs(attacker-1)].play_parry()
 			running_anim += 1
+			
+		elif fighter[abs(attacker-1)].pv <= 0:
+			
+			use_heal(attacker)
 							
 		else:
 			

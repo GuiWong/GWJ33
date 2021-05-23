@@ -21,6 +21,7 @@ var recipe_list = []
 var current_step = 0
 var product_pos = 0
 var recipe_match = []
+var has_finished = false
 
 
 
@@ -52,9 +53,10 @@ func load_next_recipe():
 		recipe_list = []
 		add_recipe(recipe_queue[0])
 		
+		recipe_queue.remove(0)
 		if linked_updatable != null:
 			
-			linked_updatable.update_sprites(null)
+			linked_updatable.re_load()
 	
 func add_recipe(recip):
 	recipe_list.append(recip)
@@ -118,6 +120,7 @@ func solve_craft(c_n):
 		current_step = 0
 		product_pos = len(recipe_list[c_n].reagents)
 		reset_recipe_match()
+		has_finished = true
 		
 		
 		if once_each:
@@ -138,31 +141,34 @@ func check_completion():
 func on_interaction(item):
 	
 	#print (item)
-	if item != null:
+	if item != null and not has_finished:
 		if check_reagent(item):
 			add_reagent(item)
 			check_completion()
 			return false
 		else:
 			return item
-	elif product_pos != 0:
+			
+	elif has_finished:
 		
 	#	print('product done')
 		var new = get_item_in_slot(product_pos)
 		remove_item_in_slot(product_pos)
 		#reset_recipe_match()
 		product_pos = 0
+		has_finished = false
 		return new
 		
 	return false
 		
 func can_interact(item):
 	
-	if item != null and check_reagent(item):
+	if item != null and check_reagent(item) and not has_finished:
 		
 		return true
 		
-	elif get_item_in_slot(product_pos) != null:
+	elif item == null and has_finished:
+		
 		
 		return true
 		
