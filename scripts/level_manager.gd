@@ -17,7 +17,7 @@ var last_level = 8
 
 #signal next_level
 
-var debug = true
+var debug = false
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
