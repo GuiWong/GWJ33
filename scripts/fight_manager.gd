@@ -271,7 +271,7 @@ func apply_damage(attacker,damage,instant = false):
 			
 		elif fighter[abs(attacker-1)].pv <= 0:
 			
-			use_heal(attacker)
+			use_heal(abs(attacker-1))
 							
 		else:
 			

@@ -17,7 +17,7 @@ var last_level = 8
 
 #signal next_level
 
-var debug = false
+var debug = true
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -73,7 +73,7 @@ func gen_level_n():
 	
 	if debug:
 		
-		return gen_level_3()
+		return gen_level_test()
 		#pass
 	
 	if current_level == 1:
@@ -249,13 +249,13 @@ func gen_level_test():
 	
 #	level.append(Room.new(3,3,[1,1],0))
 	
-	level.append(Room.new(2,2,[0,0],0))
-	level.append(Room.new(2,2,[0,5],0))
+	#level.append(Room.new(2,2,[0,5],0))
+	#level.append(Room.new(2,2,[0,5],0))
 	
-	level.append(Room.new(2,2,[0,9],0))
-	level.append(Room.new(2,2,[0,1],0))
+	#level.append(Room.new(2,2,[0,5],0))
+	level.append(Room.new(2,2,[0,4],0))
 	
-	level.append(Room.new(2,2,[3,0],0))
+	level.append(Room.new(2,2,[3,4],0))
 	
 	return level
 		
